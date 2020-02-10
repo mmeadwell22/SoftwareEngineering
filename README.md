@@ -1,2 +1,2 @@
 # SoftwareEngineering
-repository for Cleveland State University software engineering project
+Repository for Cleveland State University Software Engineering Project
