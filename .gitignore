@@ -1,6 +1,6 @@
 # Default ignored files
 /workspace.xml
 /.idea
-/.out
+/out
 README.md
 *.class
