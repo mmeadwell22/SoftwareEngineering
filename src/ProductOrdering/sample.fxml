@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.Controller">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -58,7 +58,7 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Button layoutX="268.0" layoutY="112.0" mnemonicParsing="false" text="Hello World" />
+            <Button layoutX="268.0" layoutY="112.0" mnemonicParsing="false" text="Hello World" onAction="#onClick"/>
       </children>
     </AnchorPane>
   </children>
