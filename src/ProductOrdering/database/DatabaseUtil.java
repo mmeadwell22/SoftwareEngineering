@@ -79,8 +79,6 @@ public void updateCustomer(String name, String CID,  String contact, String paym
             String SQL = "Update dbo.Customer Set CName =" + name +"where name =" +oldName;
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
-
-
         }
         catch(ClassNotFoundException e) {System.out.println(e.getMessage());
         }
@@ -89,7 +87,6 @@ public void updateCustomer(String name, String CID,  String contact, String paym
         }
    // closeSQL(connection, stm, result);
     }
-
 
     public void updateCustomerContact (String contact, String oldContact) {
         try {
@@ -102,7 +99,6 @@ public void updateCustomer(String name, String CID,  String contact, String paym
             String SQL = "Update dbo.Customer Set contact =" +contact + "where contact =" +oldContact;
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
-
         }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
@@ -121,7 +117,6 @@ public void updateCustomer(String name, String CID,  String contact, String paym
             String SQL = "Update dbo.Customer Set Address =" + address + "where address =" +oldAddress;
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
-
         }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
@@ -159,7 +154,6 @@ public void updateCustomer(String name, String CID,  String contact, String paym
             String SQL = "Update dbo.Customer Set company =" + company+ "where payment_info =" +oldCompany;
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
-
         }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
@@ -180,7 +174,6 @@ public void updateCustomer(String name, String CID,  String contact, String paym
                         "where Delivery_address =" +oldAddress;
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
-
         }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
