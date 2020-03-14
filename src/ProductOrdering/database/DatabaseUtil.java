@@ -2,7 +2,7 @@ package ProductOrdering.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.ResultSet;
+
 
 public abstract class DatabaseUtil implements Connection{
     // Database Connection String
