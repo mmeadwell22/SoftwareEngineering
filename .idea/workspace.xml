@@ -48,13 +48,11 @@
     <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="JavaFxApplication" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,7 +67,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1YXARgzGCO0aE82UcY405lX2TJb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -88,8 +88,14 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sample.controllers" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -149,6 +155,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <module name="GUI" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="GUI" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -193,22 +246,46 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1160" height="217" key="GridCell.Tab.0.bottom" timestamp="1583085005458">
+    <state x="340" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584923071868">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1160" height="217" key="GridCell.Tab.0.bottom/0.0.1218.720@0.0.1218.720" timestamp="1583085005458" />
-    <state width="1160" height="217" key="GridCell.Tab.0.center" timestamp="1583085005458">
+    <state x="340" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1218.720@0.0.1218.720" timestamp="1584923071868" />
+    <state x="390" y="117" key="FileChooserDialogImpl" timestamp="1584922401398">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1160" height="217" key="GridCell.Tab.0.center/0.0.1218.720@0.0.1218.720" timestamp="1583085005458" />
-    <state width="1160" height="217" key="GridCell.Tab.0.left" timestamp="1583085005457">
+    <state x="390" y="117" key="FileChooserDialogImpl/0.0.1218.720@0.0.1218.720" timestamp="1584922401398" />
+    <state width="1175" height="99" key="GridCell.Tab.0.bottom" timestamp="1584924744552">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1160" height="217" key="GridCell.Tab.0.left/0.0.1218.720@0.0.1218.720" timestamp="1583085005457" />
-    <state width="1160" height="217" key="GridCell.Tab.0.right" timestamp="1583085005458">
+    <state width="1175" height="99" key="GridCell.Tab.0.bottom/0.0.1218.720@0.0.1218.720" timestamp="1584924744552" />
+    <state width="1175" height="99" key="GridCell.Tab.0.center" timestamp="1584924744552">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1160" height="217" key="GridCell.Tab.0.right/0.0.1218.720@0.0.1218.720" timestamp="1583085005458" />
+    <state width="1175" height="99" key="GridCell.Tab.0.center/0.0.1218.720@0.0.1218.720" timestamp="1584924744552" />
+    <state width="1175" height="99" key="GridCell.Tab.0.left" timestamp="1584924744551">
+      <screen x="0" y="0" width="1218" height="720" />
+    </state>
+    <state width="1175" height="99" key="GridCell.Tab.0.left/0.0.1218.720@0.0.1218.720" timestamp="1584924744551" />
+    <state width="1175" height="99" key="GridCell.Tab.0.right" timestamp="1584924744552">
+      <screen x="0" y="0" width="1218" height="720" />
+    </state>
+    <state width="1175" height="99" key="GridCell.Tab.0.right/0.0.1218.720@0.0.1218.720" timestamp="1584924744552" />
+    <state width="1175" height="220" key="GridCell.Tab.1.bottom" timestamp="1584922912540">
+      <screen x="0" y="0" width="1218" height="720" />
+    </state>
+    <state width="1175" height="220" key="GridCell.Tab.1.bottom/0.0.1218.720@0.0.1218.720" timestamp="1584922912540" />
+    <state width="1175" height="220" key="GridCell.Tab.1.center" timestamp="1584922912540">
+      <screen x="0" y="0" width="1218" height="720" />
+    </state>
+    <state width="1175" height="220" key="GridCell.Tab.1.center/0.0.1218.720@0.0.1218.720" timestamp="1584922912540" />
+    <state width="1175" height="220" key="GridCell.Tab.1.left" timestamp="1584922912540">
+      <screen x="0" y="0" width="1218" height="720" />
+    </state>
+    <state width="1175" height="220" key="GridCell.Tab.1.left/0.0.1218.720@0.0.1218.720" timestamp="1584922912540" />
+    <state width="1175" height="220" key="GridCell.Tab.1.right" timestamp="1584922912540">
+      <screen x="0" y="0" width="1218" height="720" />
+    </state>
+    <state width="1175" height="220" key="GridCell.Tab.1.right/0.0.1218.720@0.0.1218.720" timestamp="1584922912540" />
     <state x="145" y="5" key="SettingsEditor" timestamp="1583084914892">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
