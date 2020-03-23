@@ -21,17 +21,18 @@ public abstract class Update extends DatabaseUtil {
             ResultSet result = stm.executeQuery(SQL);
             
             disconnect();
-        }
+            }
         catch(ClassNotFoundException e) {System.out.println(e.getMessage());
-        }
+            }
         catch(SQLException e){
             System.out.println("SQL exception " + e.getMessage());
-        }
+            }
             
         }
     }
 
     public void updateCustomerContact (String contact, String CID) {
+        if (connection == null) {
         try {
             connect();
 
@@ -39,10 +40,11 @@ public abstract class Update extends DatabaseUtil {
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
             disconnect();
-        }
+            }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
             System.out.println("SQL exception " + e.getMessage());
+            }
         }
     }
 
@@ -54,14 +56,15 @@ public abstract class Update extends DatabaseUtil {
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
             disconnect();
-        }
+            }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
             System.out.println("SQL exception " + e.getMessage());
-        }
+             }
     }
 
     public void updateCustomerPayment (String payInfo, String CID) {
+        if (connection == null) {
         try {
             connect();
 
@@ -69,14 +72,16 @@ public abstract class Update extends DatabaseUtil {
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
             disconnect();
-        }
+            }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
             System.out.println("SQL exception " + e.getMessage());
+            }
         }
     }
 
     public void updateCustomerCompany (String company, String CID) {
+        if (connection = null) {
         try {
            connect();
 
@@ -85,30 +90,50 @@ public abstract class Update extends DatabaseUtil {
             ResultSet result = stm.executeQuery(SQL);
             
             disconnect();
-        }
+            }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
             System.out.println("SQL exception " + e.getMessage());
+            }           
         }
+        
     }
 
     //method for updating the Order_info table
-    public void updateOrder (String newAddress, String oldAddress) {
+    public void updateOrder (String newAddress, String Order_ID) {
+        if (connection = null) {
         try {
-            Connection connection = null;
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "databaseName=Ordering System;integratedSecurity=true";
-            connection = DriverManager.getConnection(connectionUrl);
-            System.out.println("Connected to database");
+            connect();
 
             String SQL = "Update dbo.Order_info Set Delivery_address =" + newAddress  +
-                        "where Delivery_address =" +oldAddress;
+                        "where Order_ID =" + Order_ID;
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
-        }
+            
+            disconnect();
+            }
         catch(SQLException | ClassNotFoundException e){
             System.out.println(e.getMessage());
             System.out.println("SQL exception " + e.getMessage());
+            }
+        }
+    }
+    
+    public void updateProductName (String Pname, String PID) {
+        if (connection = null) {
+        try {
+            connect();
+            
+            String SQL = "Update dbo.Product Set Product_Name =" + Pname +
+                        "where PID =" + PID;
+            Statement stm = connection.createStatement();
+            ResultSet result = stm.executeQuery(SQL);
+            }
+        catch(SQLException | ClassNotFoundException e){
+            System.out.println(e.getMessage());
+            System.out.println("SQL exception " + e.getMessage());
+            } 
+            
         }
     }
     //end of Quang's code
