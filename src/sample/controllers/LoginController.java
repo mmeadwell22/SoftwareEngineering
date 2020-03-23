@@ -1,4 +1,4 @@
-package ProductOrdering.controllers;
+package sample.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -61,7 +61,7 @@ public class LoginController {
         if(UserName.equals(username.getText()) && Password.equals(password.getText())){
             System.out.println("login successful");
             Stage stage = (Stage) username.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
             stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
         }
         else{
