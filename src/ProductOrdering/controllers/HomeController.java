@@ -1,4 +1,4 @@
-package sample.controllers;
+package ProductOrdering.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
