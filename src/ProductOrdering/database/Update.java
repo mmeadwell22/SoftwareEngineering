@@ -22,12 +22,14 @@ public abstract class Update extends DatabaseUtil {
             
             disconnect();
             }
-        catch(ClassNotFoundException e) {System.out.println(e.getMessage());
-            }
         catch(SQLException e){
             System.out.println("SQL exception " + e.getMessage());
             }
             
+        }
+        else {      //disconnect then, recursively call
+            disconnect();
+            updateCustomerName(name, CID);
         }
     }
 
@@ -41,11 +43,14 @@ public abstract class Update extends DatabaseUtil {
             ResultSet result = stm.executeQuery(SQL);
             disconnect();
             }
-        catch(SQLException | ClassNotFoundException e){
-            System.out.println(e.getMessage());
+        catch(SQLException e){
             System.out.println("SQL exception " + e.getMessage());
             }
         }
+         else {      //disconnect then, recursively call
+            disconnect();
+            updateCustomerContact(contact, CID);   
+         }
     }
 
    public void updateCustomerAddress (String address, String CID) {
@@ -57,10 +62,13 @@ public abstract class Update extends DatabaseUtil {
             ResultSet result = stm.executeQuery(SQL);
             disconnect();
             }
-        catch(SQLException | ClassNotFoundException e){
-            System.out.println(e.getMessage());
+        catch(SQLException) {
             System.out.println("SQL exception " + e.getMessage());
              }
+        else {      //disconnect then, recursively call
+            disconnect();
+            updateCustomerAddress(address, CID);
+        }
     }
 
     public void updateCustomerPayment (String payInfo, String CID) {
@@ -73,11 +81,14 @@ public abstract class Update extends DatabaseUtil {
             ResultSet result = stm.executeQuery(SQL);
             disconnect();
             }
-        catch(SQLException | ClassNotFoundException e){
-            System.out.println(e.getMessage());
+        catch(SQLException) {
             System.out.println("SQL exception " + e.getMessage());
             }
         }
+         else {      //disconnect then, recursively call
+            disconnect();
+            updateCustomerPaymenet(payInfo, CID);   
+         }
     }
 
     public void updateCustomerCompany (String company, String CID) {
@@ -91,12 +102,14 @@ public abstract class Update extends DatabaseUtil {
             
             disconnect();
             }
-        catch(SQLException | ClassNotFoundException e){
-            System.out.println(e.getMessage());
+        catch(SQLException) {
             System.out.println("SQL exception " + e.getMessage());
             }           
         }
-        
+         else {      //disconnect then, recursively call
+            disconnect();
+            updateCustomerCompany(company, CID);
+         }
     }
 
     //method for updating the Order_info table
@@ -112,29 +125,35 @@ public abstract class Update extends DatabaseUtil {
             
             disconnect();
             }
-        catch(SQLException | ClassNotFoundException e){
-            System.out.println(e.getMessage());
+        catch(SQLException) {
             System.out.println("SQL exception " + e.getMessage());
-            }
+            }    
         }
+         else {      //disconnect then, recursively call
+            disconnect();
+            updateOrder(newAddress, Order_ID);   
+         }
     }
     
     public void updateProductName (String Pname, String PID) {
         if (connection = null) {
         try {
-            connect();
-            
+            connect();            
             String SQL = "Update dbo.Product Set Product_Name =" + Pname +
                         "where PID =" + PID;
             Statement stm = connection.createStatement();
             ResultSet result = stm.executeQuery(SQL);
-            }
-        catch(SQLException | ClassNotFoundException e){
-            System.out.println(e.getMessage());
-            System.out.println("SQL exception " + e.getMessage());
-            } 
             
+            disconnect();
+            }
+        catch(SQLException) {
+            System.out.println("SQL exception " + e.getMessage());
+            }       
+        }
+        else {
+            disconnect();
+            updateProductName(Pname, PID);
         }
     }
-    //end of Quang's code
+    
 }
