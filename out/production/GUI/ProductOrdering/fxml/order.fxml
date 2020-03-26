@@ -3,14 +3,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.controllers.OrderController">
    <children>
-      <Button fx:id="close" layoutX="178.0" mnemonicParsing="false" text="X" />
-      <ScrollPane layoutX="26.0" layoutY="25.0" prefHeight="170.0" prefWidth="150.0">
+      <Button fx:id="close" layoutX="374.0" layoutY="1.0" mnemonicParsing="false" text="X" />
+      <ScrollPane layoutX="25.0" layoutY="36.0" prefHeight="200.0" prefWidth="350.0">
         <content>
-          <AnchorPane maxWidth="150.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="150.0" />
+          <AnchorPane maxWidth="150.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="342.0">
+               <children>
+                  <TableView prefHeight="200.0" prefWidth="342.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="acceptOrder" layoutX="93.0" layoutY="212.0" mnemonicParsing="false" text="Accept order" />
+      <Button fx:id="acceptOrder" layoutX="291.0" layoutY="236.0" mnemonicParsing="false" text="Accept order" />
    </children>
 </AnchorPane>
