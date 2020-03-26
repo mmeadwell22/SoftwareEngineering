@@ -9,20 +9,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class HomeController {
+public class OrderController {
 
 
     @FXML
-    private Button order;
+    private Button close;
 
 
     public void initialize(){
-        order.setOnAction(new EventHandler<ActionEvent>() {
+        close.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    order();
-                    System.out.println("Going to order");
+                    close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -32,11 +31,10 @@ public class HomeController {
 
     }
 
-    public void order() throws Exception{
-        System.out.println("in order");
-            Stage stage = (Stage) order.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../fxml/order.fxml"));
-            stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
+    public void close() throws Exception{
+        Stage stage = (Stage) close.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
+        stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
     }
 
 

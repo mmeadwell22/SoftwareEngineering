@@ -2,15 +2,15 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+
 <AnchorPane prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="178.0" mnemonicParsing="false" text="X" fx:id="xbutton" />
+      <Button fx:id="close" layoutX="178.0" mnemonicParsing="false" text="X" />
       <ScrollPane layoutX="26.0" layoutY="25.0" prefHeight="170.0" prefWidth="150.0">
         <content>
           <AnchorPane maxWidth="150.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="150.0" />
         </content>
       </ScrollPane>
-      <Button fx:id="acceptorder" layoutX="93.0" layoutY="212.0" mnemonicParsing="false" text="Accept order" />
+      <Button fx:id="acceptOrder" layoutX="93.0" layoutY="212.0" mnemonicParsing="false" text="Accept order" />
    </children>
 </AnchorPane>

@@ -41,7 +41,7 @@
                                  <GridPane.margin>
                                     <Insets right="10.0" />
                                  </GridPane.margin></PasswordField>
-                              <Button fx:id="test" mnemonicParsing="false" prefWidth="100.0" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Button fx:id="login" mnemonicParsing="false" prefWidth="100.0" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets left="50.0" />
                                  </GridPane.margin></Button>

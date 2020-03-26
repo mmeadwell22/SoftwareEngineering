@@ -35,16 +35,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="2">
-                     <content>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                     </content>
-                        </ScrollPane>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <content>
                         <TableView prefHeight="200.0" prefWidth="200.0">
@@ -57,8 +47,19 @@
                         </ScrollPane>
                         <Label text="Pending order" />
                         <Label text="Waiting for Approval" GridPane.columnIndex="1" />
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                     <content>
+                        <TableView prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
                     </children>
                 </GridPane>
+            <Button fx:id="test" mnemonicParsing="false" text="Button" />
             </children>
         </VBox>
     </children>
