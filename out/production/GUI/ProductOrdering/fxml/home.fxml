@@ -46,7 +46,7 @@
                      </content>
                         </ScrollPane>
                         <Label text="Pending order" />
-                        <Label text="Waiting for Approval" GridPane.columnIndex="1" />
+                        <Label text="Incomplete Orders" GridPane.columnIndex="1" />
                   <ScrollPane hmax="0.0" hmin="500.0" prefHeight="200.0" prefWidth="200.0" vmax="0.0" vmin="500.0" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <content>
                         <TableView prefHeight="200.0" prefWidth="200.0">
@@ -63,7 +63,7 @@
                   </ScrollPane>
                     </children>
                 </GridPane>
-            <Button fx:id="order" mnemonicParsing="false" text="Button" />
+            <Button fx:id="order" mnemonicParsing="false" text="Order" />
             </children>
         </VBox>
     </children>

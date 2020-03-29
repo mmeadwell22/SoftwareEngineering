@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63de7637-3ab4-40a2-862a-9ea4ae4aa808" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ProductOrdering/fxml/customer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ProductOrdering/fxml/customerInfo.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ProductOrdering/images/edit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ProductOrdering/images/images.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GUI/ProductOrdering/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GUI/ProductOrdering/fxml/home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductOrdering/fxml/home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/fxml/home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GUI/ProductOrdering/fxml/order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GUI/ProductOrdering/fxml/order.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductOrdering/fxml/customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/fxml/customer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ProductOrdering/fxml/order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/fxml/order.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +88,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -203,13 +206,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="65" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585154634542">
+    <state x="65" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585509548924">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state x="65" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1218.720@0.0.1218.720" timestamp="1585154634542" />
+    <state x="65" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1218.720@0.0.1218.720" timestamp="1585509548924" />
+    <state x="340" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1585509545395">
+      <screen x="0" y="0" width="1218" height="720" />
+    </state>
+    <state x="340" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1218.720@0.0.1218.720" timestamp="1585509545395" />
     <state x="340" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584923071868">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
@@ -218,22 +226,22 @@
       <screen x="0" y="0" width="1218" height="720" />
     </state>
     <state x="390" y="117" key="FileChooserDialogImpl/0.0.1218.720@0.0.1218.720" timestamp="1585247129753" />
-    <state width="1175" height="103" key="GridCell.Tab.0.bottom" timestamp="1585330690131">
+    <state width="1175" height="103" key="GridCell.Tab.0.bottom" timestamp="1585509626165">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.bottom/0.0.1218.720@0.0.1218.720" timestamp="1585330690131" />
-    <state width="1175" height="103" key="GridCell.Tab.0.center" timestamp="1585330690131">
+    <state width="1175" height="103" key="GridCell.Tab.0.bottom/0.0.1218.720@0.0.1218.720" timestamp="1585509626165" />
+    <state width="1175" height="103" key="GridCell.Tab.0.center" timestamp="1585509626165">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.center/0.0.1218.720@0.0.1218.720" timestamp="1585330690131" />
-    <state width="1175" height="103" key="GridCell.Tab.0.left" timestamp="1585330690131">
+    <state width="1175" height="103" key="GridCell.Tab.0.center/0.0.1218.720@0.0.1218.720" timestamp="1585509626165" />
+    <state width="1175" height="103" key="GridCell.Tab.0.left" timestamp="1585509626165">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.left/0.0.1218.720@0.0.1218.720" timestamp="1585330690131" />
-    <state width="1175" height="103" key="GridCell.Tab.0.right" timestamp="1585330690131">
+    <state width="1175" height="103" key="GridCell.Tab.0.left/0.0.1218.720@0.0.1218.720" timestamp="1585509626165" />
+    <state width="1175" height="103" key="GridCell.Tab.0.right" timestamp="1585509626165">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.right/0.0.1218.720@0.0.1218.720" timestamp="1585330690131" />
+    <state width="1175" height="103" key="GridCell.Tab.0.right/0.0.1218.720@0.0.1218.720" timestamp="1585509626165" />
     <state width="1175" height="220" key="GridCell.Tab.1.bottom" timestamp="1584922912540">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
@@ -254,9 +262,9 @@
       <screen x="0" y="0" width="1218" height="720" />
     </state>
     <state x="145" y="5" key="SettingsEditor/0.0.1218.720@0.0.1218.720" timestamp="1585330095393" />
-    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585506366376">
+    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585509578852">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1218.720@0.0.1218.720" timestamp="1585506366376" />
+    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1218.720@0.0.1218.720" timestamp="1585509578852" />
   </component>
 </project>
