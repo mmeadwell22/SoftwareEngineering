@@ -1,6 +1,6 @@
 package ProductOrdering.database;
 
-public class Product extends Record {
+public class Product extends Record{
     private String item_name;
     private double item_price;
     private String product_id;
@@ -17,23 +17,22 @@ public class Product extends Record {
         this.supplier_address = supplier_address;
     }
 
-    public double getItem_price() {
+    public String getItemName() {
+        return item_name;
+    }
+    public double getItemPrice() {
         return item_price;
+    }
+
+    public String getProductID() {
+        return product_id;
     }
 
     public int getStock() {
         return stock;
     }
 
-    public String getItem_name() {
-        return item_name;
-    }
-
-    public String getProduct_id() {
-        return product_id;
-    }
-
-    public String getSupplier_address() {
+    public String getAddress() {
         return supplier_address;
     }
 }

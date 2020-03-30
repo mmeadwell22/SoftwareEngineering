@@ -2,46 +2,40 @@ package ProductOrdering.database;
 
 import java.util.Date;
 
-public class Order extends Record {
+public class Order extends Record{
     private String order_id;
     private String customer_id;
-    private String product_id;
-    private double price;
+    private double total;
     private String delivery_address;
     private Date order_date;
 
-    public Order (String order_id, double price,
-                  String customer_id, String product_id,
-                  String delivery_address){
+    public Order (String order_id, double total,
+                  String customer_id, String delivery_address,
+                  Date order_date){
         this.order_id = order_id;
-        this.price = price;
+        this.total = total;
         this.customer_id = customer_id;
-        this.product_id = product_id;
         this.delivery_address = delivery_address;
-        order_date = new Date();
+        this.order_date = order_date;
     }
 
-    public String getProduct_id() {
-        return product_id;
-    }
-
-    public String getCustomer_id() {
+    public String getCustomerID() {
         return customer_id;
     }
 
-    public String getDelivery_address() {
+    public String getShipAddress() {
         return delivery_address;
     }
 
-    public Date getOrder_date() {
+    public Date getOrderDate() {
         return order_date;
     }
 
-    public double getPrice() {
-        return price;
+    public double getTotal() {
+        return total;
     }
 
-    public String getOrder_id() {
+    public String getOrderID() {
         return order_id;
     }
 }

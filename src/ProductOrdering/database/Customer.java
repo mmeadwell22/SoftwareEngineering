@@ -3,43 +3,43 @@ package ProductOrdering.database;
 public class Customer extends Record {
     private String customer_name,
     customer_id,
-    contact,
+    phone,
     business_address,
     payment_info,
     company_name;
 
     public Customer(String customer_name, String customer_id,
-                    String contact, String business_address,
+                    String phone, String business_address,
                     String payment_info, String company_name){
         this.customer_name = customer_name;
         this.customer_id = customer_id;
-        this.contact = contact;
+        this.phone = phone;
         this.business_address = business_address;
         this.payment_info = payment_info;
         this.company_name = company_name;
     }
 
-    public String getCompany_name() {
+    public String getName() {
         return company_name;
     }
 
-    public String getBusiness_address() {
+    public String getAddress() {
         return business_address;
     }
 
-    public String getContact() {
-        return contact;
+    public String getPhone() {
+        return phone;
     }
 
-    public String getCustomer_id() {
+    public String getCustomerID() {
         return customer_id;
     }
 
-    public String getCustomer_name() {
+    public String getCustomerName() {
         return customer_name;
     }
 
-    public String getPayment_info() {
+    public String getPaymentInfo() {
         return payment_info;
     }
 }
