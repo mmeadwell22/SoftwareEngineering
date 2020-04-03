@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.fxml.Customer">
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.controllers.CustomerController">
    <children>
       <Button fx:id="checkOut" layoutX="310.0" layoutY="247.0" mnemonicParsing="false" text="Check out" />
       <Label layoutX="32.0" layoutY="104.0" text="Name" />
@@ -18,9 +18,6 @@
          <image>
             <Image url="@../images/table.jpg" />
          </image></ImageView>
-      <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="337.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/images.png" />
-         </image></ImageView>
+      <Button fx:id="gotoInfo" layoutX="336.0" layoutY="18.0" mnemonicParsing="false" text="Info" />
    </children>
 </AnchorPane>

@@ -20,6 +20,7 @@ import java.awt.*;
 public class LoginController {
 
     private String UserName = "dev";
+    private String Customer = "customer";
     private String Password = "asdf1234";
 
     @FXML
@@ -62,6 +63,12 @@ public class LoginController {
             System.out.println("login successful");
             Stage stage = (Stage) username.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
+            stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
+        }
+        else if(Customer.equals(username.getText()) && Password.equals(password.getText())){
+            System.out.println("logging in as customer");
+            Stage stage = (Stage) username.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("../fxml/customerInfo.fxml"));
             stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
         }
         else{
