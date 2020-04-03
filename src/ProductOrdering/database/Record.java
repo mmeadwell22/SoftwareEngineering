@@ -1,7 +1,5 @@
 package ProductOrdering.database;
 
-import java.sql.SQLException;
+public abstract class Record {
 
-public class Record{
 }
-
