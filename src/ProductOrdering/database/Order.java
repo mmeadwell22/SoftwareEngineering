@@ -1,12 +1,14 @@
 package ProductOrdering.database;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.Date;
 
 public class Order extends Record{
     private String order_id;
     private String customer_id;
     private double total;
-    private String delivery_address;
+    private SimpleStringProperty delivery_address;
     private Date order_date;
 
     public Order (String order_id, double total,
@@ -15,7 +17,7 @@ public class Order extends Record{
         this.order_id = order_id;
         this.total = total;
         this.customer_id = customer_id;
-        this.delivery_address = delivery_address;
+        this.delivery_address = new SimpleStringProperty(delivery_address);
         this.order_date = order_date;
     }
 
@@ -23,8 +25,8 @@ public class Order extends Record{
         return customer_id;
     }
 
-    public String getShipAddress() {
-        return delivery_address;
+    public String GetShipAddress() {
+        return delivery_address.get();
     }
 
     public Date getOrderDate() {

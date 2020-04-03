@@ -5,13 +5,7 @@ import java.sql.*;
 public abstract class DatabaseUtil implements Connection{
     // Database Connection String
     protected static String connectionUrl =
-            "jdbc:sqlserver://yourserver.database.windows.net:1433;"
-                    + "database=OrderingSystem;"
-                    + "user=User0@NOELS-DESKTOP;"
-                    + "password=password;"
-                    + "encrypt=true;"
-                    + "trustServerCertificate=false;"
-                    + "loginTimeout=30;";
+            "jdbc:sqlserver://localhost:1433;databaseName=OrderSystem;integratedSecurity=true;";
 
     // Connect object for database connection
     protected static Connection connection = null;
@@ -19,11 +13,12 @@ public abstract class DatabaseUtil implements Connection{
     // Connect to the database
     public static void connect() {
         try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(connectionUrl);
             System.out.println("Connection to the Database Succeeded.");
         }
         // Handle any errors that may have occurred.
-        catch (SQLException e) {
+        catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             System.out.println("Connection to the Database Failed.");
         }
