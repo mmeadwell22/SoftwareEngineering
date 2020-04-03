@@ -4,18 +4,18 @@ import java.sql.*;
 
 public abstract class Update extends DatabaseUtil {
 
-    public void updateCustomer(String CID, String name,
+    public void customer(String CID, String name,
                                String contact, String address,
                                String payment, String company)
             throws SQLException, ClassNotFoundException {
-        updateCustomerName(name, CID);
-        updateCustomerContact(contact, CID);
-        updateCustomerAddress(address, CID);
-        updateCustomerPayment(payment, CID);
-        updateCustomerCompany(company, CID);
+        customerName(name, CID);
+        customerContact(contact, CID);
+        customerAddress(address, CID);
+        customerPayment(payment, CID);
+        customerCompany(company, CID);
     }
 
-    public void updateCustomerName(String name, String CID) {
+    public void customerName(String name, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -30,12 +30,12 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateCustomerContact(String contact, String CID) {
+    public void customerContact(String contact, String CID) {
         if (connection == null) {
             try {
                 connect();
 
-                String SQL = "Update dbo.Customer Set contact =" + contact + "where CID =" + CID;
+                String SQL = "Update dbo.Customer Set contact = " + contact + "where CID =" + CID;
                 Statement stm = connection.createStatement();
                 ResultSet result = stm.executeQuery(SQL);
 
@@ -45,10 +45,9 @@ public abstract class Update extends DatabaseUtil {
             }
             disconnect();
         }
-
     }
 
-    public void updateCustomerAddress(String address, String CID) {
+    public void customerAddress(String address, String CID) {
         try {
             connect();
 
@@ -62,7 +61,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateCustomerPayment(String payInfo, String CID) {
+    public void customerPayment(String payInfo, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -78,7 +77,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateCustomerCompany(String company, String CID) {
+    public void customerCompany(String company, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -93,11 +92,10 @@ public abstract class Update extends DatabaseUtil {
                 System.out.println("SQL exception " + e.getMessage());
             }
         }
-
     }
 
     //method for updating the Order_info table
-    public void updateOrder(String newAddress, String Order_ID) {
+    public void order(String newAddress, String Order_ID) {
         if (connection == null) {
             try {
                 connect();
@@ -115,7 +113,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateProductName(String Pname, String PID) {
+    public void productName(String Pname, String PID) {
         if (connection == null) {
             try {
                 connect();
@@ -128,7 +126,6 @@ public abstract class Update extends DatabaseUtil {
                 System.out.println(e.getMessage());
                 System.out.println("SQL exception " + e.getMessage());
             }
-
         }
     }
     //end of Quang's code

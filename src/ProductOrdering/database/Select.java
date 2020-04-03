@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public abstract class Select extends DatabaseUtil {
 
     public static ArrayList<Customer> allCustomers() {
-        ArrayList<Customer> recList = null;
+        ArrayList<Customer> recList = new ArrayList<Customer>();
         if (connection == null) {
             try {
                 connect();
@@ -38,7 +38,7 @@ public abstract class Select extends DatabaseUtil {
     }
 
     public static ArrayList<Order> allOrders() {
-        ArrayList<Order> recList = null;
+        ArrayList<Order> recList = new ArrayList<Order>();
         if (connection == null) {
             try {
                 connect();
@@ -66,7 +66,7 @@ public abstract class Select extends DatabaseUtil {
     }
 
     public static ArrayList<Product> allProducts() {
-        ArrayList<Product> recList = null;
+        ArrayList<Product> recList = new ArrayList<Product>();
         if (connection == null) {
             try {
                 connect();
@@ -162,7 +162,7 @@ public abstract class Select extends DatabaseUtil {
     }
 
     public static ArrayList<Record> customQuery(String query) {
-        ArrayList<Record> recList = null;
+        ArrayList<Record> recList = new ArrayList<>();
         if (connection == null) {
             try {
                 Statement st = connection.createStatement();
