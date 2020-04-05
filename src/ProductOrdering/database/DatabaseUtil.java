@@ -33,6 +33,7 @@ public abstract class DatabaseUtil implements Connection{
     public static void disconnect()  {
         try{
             connection.close();
+
             System.out.println("Successfully closed the connection to the database.");
         } catch (SQLException e){
             e.printStackTrace();
