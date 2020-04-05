@@ -2,7 +2,7 @@ package ProductOrdering.database;
 import java.sql.*;
 
 
-public abstract class DatabaseUtil implements Connection{
+public abstract class DatabaseUtil implements Connection {
     // Database Connection String
     protected static String connectionUrl =
             "jdbc:sqlserver://localhost:1433;databaseName=OrderSystem;integratedSecurity=true;";
@@ -28,6 +28,7 @@ public abstract class DatabaseUtil implements Connection{
     public static void disconnect()  {
         try{
             connection.close();
+            connection = null;
             System.out.println("Successfully closed the connection to the database.");
         } catch (SQLException e){
             e.printStackTrace();

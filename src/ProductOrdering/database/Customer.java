@@ -8,6 +8,8 @@ public class Customer extends Record {
     payment_info,
     company_name;
 
+    Order order;
+
     public Customer(String customer_name, String customer_id,
                     String phone, String business_address,
                     String payment_info, String company_name){
@@ -41,5 +43,10 @@ public class Customer extends Record {
 
     public String getPaymentInfo() {
         return payment_info;
+    }
+
+    //setter for setting the order/orders associated with the customer.
+    public void setOrder(Order order){
+        this.order = order;
     }
 }
