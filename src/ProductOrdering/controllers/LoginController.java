@@ -55,6 +55,9 @@ public class LoginController {
                 }
             }
         });
+
+        username.setText(UserName);
+        password.setText(Password);
     }
 
     public void login() throws Exception{

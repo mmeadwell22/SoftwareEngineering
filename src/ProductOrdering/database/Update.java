@@ -15,14 +15,14 @@ public abstract class Update extends DatabaseUtil {
         updateCustomerCompany(company, CID);
     }
 
-    public void updateCustomerName(String name, String CID) {
+    public static void updateCustomerName(String name, String CID) {
         if (connection == null) {
             try {
                 connect();
 
-                String SQL = "Update dbo.Customer Set CName =" + name + "where CID =" + CID;
+                String SQL = "Update dbo.Customer Set Customer_Name = '" + name + "'  where Customer_ID = " + CID;
                 Statement stm = connection.createStatement();
-                ResultSet result = stm.executeQuery(SQL);
+                stm.executeQuery(SQL);
             } catch (SQLException e) {
                 System.out.println("SQL exception " + e.getMessage());
             }
@@ -30,7 +30,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateCustomerContact(String contact, String CID) {
+    public static void updateCustomerContact(String contact, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -48,7 +48,7 @@ public abstract class Update extends DatabaseUtil {
 
     }
 
-    public void updateCustomerAddress(String address, String CID) {
+    public static void updateCustomerAddress(String address, String CID) {
         try {
             connect();
 
@@ -62,7 +62,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateCustomerPayment(String payInfo, String CID) {
+    public static void updateCustomerPayment(String payInfo, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -78,7 +78,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateCustomerCompany(String company, String CID) {
+    public static void updateCustomerCompany(String company, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -97,7 +97,7 @@ public abstract class Update extends DatabaseUtil {
     }
 
     //method for updating the Order_info table
-    public void updateOrder(String newAddress, String Order_ID) {
+    public static void updateOrder(String newAddress, String Order_ID) {
         if (connection == null) {
             try {
                 connect();
@@ -115,7 +115,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void updateProductName(String Pname, String PID) {
+    public static void updateProductName(String Pname, String PID) {
         if (connection == null) {
             try {
                 connect();
