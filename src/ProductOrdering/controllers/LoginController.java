@@ -63,9 +63,8 @@ public class LoginController {
     public void login() throws Exception{
         if(UserName.equals(username.getText()) && Password.equals(password.getText())){
             System.out.println("login successful");
-            Stage stage = (Stage) username.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
-            stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
+            username.getScene().setRoot(root);
         }
         else{
             errorText.setText("Incorrect username or password");
