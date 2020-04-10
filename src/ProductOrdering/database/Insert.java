@@ -86,9 +86,9 @@ public abstract class Insert extends DatabaseUtil {
         }
 
         if (connection == null) {
-            return "Error: Database not connected";
+            connect();
         }
-
+        disconnect();
         return "Success";
     }
 }
