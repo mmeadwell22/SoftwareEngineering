@@ -39,8 +39,12 @@
                      <content>
                         <TableView prefHeight="200.0" prefWidth="200.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                              <TableColumn prefWidth="75.0" text="Name" />
+                              <TableColumn prefWidth="75.0" text="Order ID" />
+                              <TableColumn prefWidth="75.0" text="Email" />
+                              <TableColumn prefWidth="75.0" text="Address" />
+                              <TableColumn prefWidth="75.0" text="Phone" />
+                              <TableColumn prefWidth="75.0" text="Date Ordered" />
                           </columns>
                         </TableView>
                      </content>
@@ -63,7 +67,7 @@
                   </ScrollPane>
                     </children>
                 </GridPane>
-            <Button fx:id="order" mnemonicParsing="false" text="Order" />
+            <Button fx:id="order" mnemonicParsing="false" text="New Order" />
             </children>
         </VBox>
     </children>

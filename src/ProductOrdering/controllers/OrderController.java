@@ -14,6 +14,8 @@ public class OrderController {
 
     @FXML
     private Button close;
+    @FXML
+    private Button gotoCustomerList;
 
 
     public void initialize(){
@@ -27,15 +29,27 @@ public class OrderController {
                 }
             }
         });
-
-
+        gotoCustomerList.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    gotoCustomerList();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
+
 
     public void close() throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
         close.getScene().setRoot(root);
     }
-
+    public void gotoCustomerList() throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/customerList.fxml"));
+        close.getScene().setRoot(root);
+    }
 
 
 }
