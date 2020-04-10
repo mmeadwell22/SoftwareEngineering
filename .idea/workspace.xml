@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63de7637-3ab4-40a2-862a-9ea4ae4aa808" name="Default Changelist" comment="Idk">
+      <change afterPath="$PROJECT_DIR$/src/ProductOrdering/controllers/CustomerListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ProductOrdering/fxml/customerList.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GUI/ProductOrdering/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GUI/ProductOrdering/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductOrdering/controllers/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/controllers/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductOrdering/controllers/CustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/controllers/CustomerInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductOrdering/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductOrdering/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProductOrdering/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductOrdering/controllers/OrderController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +100,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../master/SoftwareEngineering" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
@@ -216,30 +224,30 @@
       <screen x="0" y="0" width="1218" height="720" />
     </state>
     <state x="340" y="109" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1218.720@0.0.1218.720" timestamp="1584923071868" />
-    <state x="255" y="0" key="CommitChangelistDialog2" timestamp="1585941218562">
+    <state x="255" y="0" key="CommitChangelistDialog2" timestamp="1586542938578">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state x="255" y="0" key="CommitChangelistDialog2/0.0.1218.720@0.0.1218.720" timestamp="1585941218562" />
-    <state x="390" y="117" key="FileChooserDialogImpl" timestamp="1585247129753">
+    <state x="255" y="0" key="CommitChangelistDialog2/0.0.1218.720@0.0.1218.720" timestamp="1586542938577" />
+    <state x="390" y="117" key="FileChooserDialogImpl" timestamp="1586536972306">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state x="390" y="117" key="FileChooserDialogImpl/0.0.1218.720@0.0.1218.720" timestamp="1585247129753" />
-    <state width="1175" height="103" key="GridCell.Tab.0.bottom" timestamp="1585941255796">
+    <state x="390" y="117" key="FileChooserDialogImpl/0.0.1218.720@0.0.1218.720" timestamp="1586536972306" />
+    <state width="1175" height="103" key="GridCell.Tab.0.bottom" timestamp="1586542703926">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.bottom/0.0.1218.720@0.0.1218.720" timestamp="1585941255796" />
-    <state width="1175" height="103" key="GridCell.Tab.0.center" timestamp="1585941255796">
+    <state width="1175" height="103" key="GridCell.Tab.0.bottom/0.0.1218.720@0.0.1218.720" timestamp="1586542703926" />
+    <state width="1175" height="103" key="GridCell.Tab.0.center" timestamp="1586542703925">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.center/0.0.1218.720@0.0.1218.720" timestamp="1585941255796" />
-    <state width="1175" height="103" key="GridCell.Tab.0.left" timestamp="1585941255796">
+    <state width="1175" height="103" key="GridCell.Tab.0.center/0.0.1218.720@0.0.1218.720" timestamp="1586542703925" />
+    <state width="1175" height="103" key="GridCell.Tab.0.left" timestamp="1586542703924">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.left/0.0.1218.720@0.0.1218.720" timestamp="1585941255796" />
-    <state width="1175" height="103" key="GridCell.Tab.0.right" timestamp="1585941255796">
+    <state width="1175" height="103" key="GridCell.Tab.0.left/0.0.1218.720@0.0.1218.720" timestamp="1586542703924" />
+    <state width="1175" height="103" key="GridCell.Tab.0.right" timestamp="1586542703925">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state width="1175" height="103" key="GridCell.Tab.0.right/0.0.1218.720@0.0.1218.720" timestamp="1585941255796" />
+    <state width="1175" height="103" key="GridCell.Tab.0.right/0.0.1218.720@0.0.1218.720" timestamp="1586542703925" />
     <state width="1175" height="220" key="GridCell.Tab.1.bottom" timestamp="1584922912540">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
@@ -264,9 +272,9 @@
       <screen x="0" y="0" width="1218" height="720" />
     </state>
     <state x="202" y="95" key="Vcs.Push.Dialog.v2/0.0.1218.720@0.0.1218.720" timestamp="1585941175922" />
-    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585941113050">
+    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586542963373">
       <screen x="0" y="0" width="1218" height="720" />
     </state>
-    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1218.720@0.0.1218.720" timestamp="1585941113050" />
+    <state x="453" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1218.720@0.0.1218.720" timestamp="1586542963373" />
   </component>
 </project>

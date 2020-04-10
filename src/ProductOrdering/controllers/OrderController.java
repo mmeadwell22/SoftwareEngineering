@@ -34,7 +34,7 @@ public class OrderController {
     public void close() throws Exception{
         Stage stage = (Stage) close.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
-        stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
+        close.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
     }
 
 

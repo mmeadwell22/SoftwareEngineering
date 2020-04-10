@@ -28,8 +28,7 @@ public class CustomerController {
     }
 
     public void gotoInfo() throws Exception{
-        Stage stage = (Stage) gotoInfo.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/customerInfo.fxml"));
-        stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
+        gotoInfo.getScene().setRoot(root);
     }
 }

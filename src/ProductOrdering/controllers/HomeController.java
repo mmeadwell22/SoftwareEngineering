@@ -34,9 +34,8 @@ public class HomeController {
 
     public void order() throws Exception{
         System.out.println("in order");
-            Stage stage = (Stage) order.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../fxml/order.fxml"));
-            stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/order.fxml"));
+        order.getScene().setRoot(root);
     }
 
 
