@@ -41,30 +41,25 @@ public abstract class Insert extends DatabaseUtil {
     // Inserts a Product
     public static String product (String product_name, double price,
                                        String product_id, int stock,
-                                       String order_id, String supplier_addr) throws SQLException {
+                                       String supplier_addr) {
         if (product_name.length() > 50 ||
                 product_id.length() > 9 ||
-                order_id.length() > 9 ||
                 supplier_addr.length() > 50) {
             return "Error: Character length too long";
         }
 
         if (connection == null) {
-            return "Error: Database not connected";
+            connect();
         }
 
         try {
-            String insert = "INSERT INTO Product VALUES (" + product_name + ", " + price + ", " +
-                    product_id + ", " + stock + ", " +
-                    order_id + ", " + supplier_addr + ");";
+            String insert = "INSERT INTO Product VALUES ('" + product_name + "', " + price + ", " + product_id + ", " + stock + ", '" + supplier_addr + "')";
             PreparedStatement prepsInsertProduct = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-            if (!prepsInsertProduct.execute()) {
-                return "Error: Product record already exists or failed to insert";
-            }
+            prepsInsertProduct.execute();
         } catch (SQLException ex) {
             return ex.toString();
         }
-
+        disconnect();
         return "Success";
     }
 

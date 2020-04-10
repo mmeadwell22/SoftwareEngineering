@@ -20,9 +20,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.stage.WindowEvent;
 
 
@@ -35,6 +32,8 @@ public class HomeController {
 
     //grabs references to all the fxml objects by the fx:id in the corresponding fxml file.
     @FXML private Button refresh;
+    @FXML private Button newProduct;
+    @FXML private Button newOrder;
     @FXML private TableView pendingOrderTable;
     @FXML private TableColumn nameCol;
     @FXML private TableColumn orderidCol;
@@ -46,7 +45,6 @@ public class HomeController {
     @FXML private TableView incompleteOrderTable;
     @FXML private ScrollPane pendingOrderScroll;
     @FXML private ScrollPane incompleteOrderScroll;
-    @FXML private MenuBar menuBar;
 
     //this function is ran whenever a new controller is initialized
     public void initialize(){
@@ -93,14 +91,43 @@ public class HomeController {
             }
         });
 
+        //when refresh button is click data is retrieved from database
         refresh.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 initialize();
             }
         });
+
+        //when new order button is click go to new scene
+        newProduct.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("../fxml/newProduct.fxml"));
+                    newProduct.getScene().setRoot(root);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        newOrder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("../fxml/newOrder.fxml"));
+                    newOrder.getScene().setRoot(root);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
+    //function that is responsible for retrieveing data from database
     public List GetDataFromDatabase(List list){
         //retrieves all order in the database
         List orders = Select.allOrders();
@@ -114,12 +141,8 @@ public class HomeController {
         return list;
     }
 
-    //function calls a new page to be loaded.
+    //function calls a new modal to be loaded.
     public void viewOrder(MouseEvent event, Order order) throws Exception{
-        //Stage stage = (Stage) order.getScene().getWindow();
-        //Parent root = FXMLLoader.load(getClass().getResource("../fxml/order.fxml"));
-        //stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
-
         Stage modal = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/order.fxml"));
         Parent root = loader.load();

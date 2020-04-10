@@ -65,6 +65,8 @@
                     </children>
                 </GridPane>
             <Button fx:id="refresh" mnemonicParsing="false" text="Refresh" />
+                <Button fx:id="newProduct" mnemonicParsing="false" text="New Product"/>
+                <Button fx:id="newOrder" mnemonicParsing="false" text="New Order"/>
             </children>
         </VBox>
     </children>
