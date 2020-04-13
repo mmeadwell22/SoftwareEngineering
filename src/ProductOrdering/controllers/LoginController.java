@@ -27,12 +27,12 @@ public class LoginController {
     @FXML
     private PasswordField password;
     @FXML
-    private Button test;
+    private Button login;
     @FXML
     private Text errorText;
 
     public void initialize(){
-        test.setOnAction(new EventHandler<ActionEvent>() {
+        login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -55,6 +55,9 @@ public class LoginController {
                 }
             }
         });
+
+        username.setText(UserName);
+        password.setText(Password);
     }
 
     public void login() throws Exception{

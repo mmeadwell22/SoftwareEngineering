@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public abstract class Select extends DatabaseUtil {
 
     public static ArrayList<Customer> allCustomers() {
-        ArrayList<Customer> recList = new ArrayList<Customer>();
+        ArrayList<Customer> recList = new ArrayList<>();
         if (connection == null) {
             try {
                 connect();
@@ -38,11 +38,11 @@ public abstract class Select extends DatabaseUtil {
     }
 
     public static ArrayList<Order> allOrders() {
-        ArrayList<Order> recList = new ArrayList<Order>();
+        ArrayList<Order> recList = new ArrayList<>();
         if (connection == null) {
             try {
                 connect();
-                String query = "SELECT * from  ORDER";
+                String query = "SELECT * from  dbo.[ORDER]";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
 
@@ -95,20 +95,27 @@ public abstract class Select extends DatabaseUtil {
     }
 
     public static Customer uniqueCustomer(String id) {
+        id = id.trim();
+        //ArrayList<Customer> recList = new ArrayList<Customer>();
         if (connection == null) {
             try {
                 connect();
-                String query = "SELECT * from CUSTOMER";
+                String query = "SELECT * FROM dbo.Customer WHERE Customer_ID = '" + id + "'";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
-                return new Customer(
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6)
-                );
+                while(rs.next()) {
+                    assert false;
+                    Customer cus = new Customer(
+                            rs.getString(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6)
+                    );
+                    disconnect();
+                    return cus;
+                }
             } catch (SQLException ex) {
                 System.out.println("Select.unique(table: String, id: String) error.");
             }
@@ -121,7 +128,7 @@ public abstract class Select extends DatabaseUtil {
         if (connection == null) {
             try {
                 connect();
-                String query = "SELECT * from ORDER";
+                String query = "SELECT * from dbo.[ORDER]";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
                 return new Order(

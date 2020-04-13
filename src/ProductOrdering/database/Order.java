@@ -1,5 +1,7 @@
 package ProductOrdering.database;
 
+import javafx.beans.property.SimpleStringProperty;
+
 import java.util.Date;
 
 public class Order extends Record{
@@ -8,6 +10,7 @@ public class Order extends Record{
     private double total;
     private String delivery_address;
     private Date order_date;
+    private Customer customer;
 
     public Order (String order_id, double total,
                   String customer_id, String delivery_address,
@@ -23,7 +26,7 @@ public class Order extends Record{
         return customer_id;
     }
 
-    public String getShipAddress() {
+    public String getDeliveryAddress() {
         return delivery_address;
     }
 
@@ -37,5 +40,17 @@ public class Order extends Record{
 
     public String getOrderID() {
         return order_id;
+    }
+
+    public String getCustomerName(){
+        return customer.getCustomerName();
+    }
+
+    public String getCustomerPhone(){
+        return this.customer.getPhone();
+    }
+
+    public void setCustomer(Customer cus){
+        this.customer = cus;
     }
 }

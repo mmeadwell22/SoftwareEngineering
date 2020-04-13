@@ -6,9 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.controllers.HomeController">
     <children>
         <VBox prefHeight="300.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <MenuBar fx:id="menuBar"></MenuBar>
             <children>
                 <HBox prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: orange;">
                     <children>
@@ -24,7 +25,7 @@
                             </opaqueInsets>
                         </Label>
                     </children></HBox>
-                <GridPane prefHeight="200.0">
+                <GridPane prefHeight="500.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,20 +36,35 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.rowSpan="2">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                            </content>
-                        </ScrollPane>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                            </content>
+                        <ScrollPane fx:id="incompleteOrderScroll" prefHeight="500.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                     <content>
+                        <TableView fx:id="incompleteOrderTable" prefHeight="500.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </content>
                         </ScrollPane>
                         <Label text="Pending order" />
-                        <Label text="Waiting for Approval" GridPane.columnIndex="1" />
+                        <Label text="Incomplete Orders" GridPane.columnIndex="1" />
+                  <ScrollPane fx:id="pendingOrderScroll" hmax="0.0" hmin="500.0" prefHeight="500.0" prefWidth="200.0" vmax="0.0" vmin="500.0" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                     <content>
+                        <TableView fx:id="pendingOrderTable" prefHeight="500.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
+                            <TableColumn fx:id="orderidCol" prefWidth="75.0" text="Order ID" />
+                            <TableColumn fx:id="emailCol" prefWidth="75.0" text="Email" />
+                            <TableColumn fx:id="addressCol" prefWidth="75.0" text="Address" />
+                            <TableColumn fx:id="phoneCol" prefWidth="75.0" text="Phone" />
+                            <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date Ordered" />
+                          </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
                     </children>
                 </GridPane>
+            <Button fx:id="refresh" mnemonicParsing="false" text="Refresh" />
             </children>
         </VBox>
     </children>

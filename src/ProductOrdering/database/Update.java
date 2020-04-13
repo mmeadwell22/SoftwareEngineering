@@ -15,14 +15,14 @@ public abstract class Update extends DatabaseUtil {
         customerCompany(company, CID);
     }
 
-    public void customerName(String name, String CID) {
+    public static void customerName(String name, String CID) {
         if (connection == null) {
             try {
                 connect();
 
-                String SQL = "Update dbo.Customer Set CName =" + name + "where CID =" + CID;
+                String SQL = "Update dbo.Customer Set Customer_Name = '" + name + "'  where Customer_ID = " + CID;
                 Statement stm = connection.createStatement();
-                ResultSet result = stm.executeQuery(SQL);
+                stm.executeQuery(SQL);
             } catch (SQLException e) {
                 System.out.println("SQL exception " + e.getMessage());
             }
@@ -30,12 +30,12 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void customerContact(String contact, String CID) {
+    public static void customerContact(String contact, String CID) {
         if (connection == null) {
             try {
                 connect();
 
-                String SQL = "Update dbo.Customer Set contact = " + contact + "where CID =" + CID;
+                String SQL = "Update dbo.Customer Set contact =" + contact + "where CID =" + CID;
                 Statement stm = connection.createStatement();
                 ResultSet result = stm.executeQuery(SQL);
 
@@ -45,9 +45,10 @@ public abstract class Update extends DatabaseUtil {
             }
             disconnect();
         }
+
     }
 
-    public void customerAddress(String address, String CID) {
+    public static void customerAddress(String address, String CID) {
         try {
             connect();
 
@@ -61,7 +62,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void customerPayment(String payInfo, String CID) {
+    public static void customerPayment(String payInfo, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -77,7 +78,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void customerCompany(String company, String CID) {
+    public static void customerCompany(String company, String CID) {
         if (connection == null) {
             try {
                 connect();
@@ -92,10 +93,11 @@ public abstract class Update extends DatabaseUtil {
                 System.out.println("SQL exception " + e.getMessage());
             }
         }
+
     }
 
     //method for updating the Order_info table
-    public void order(String newAddress, String Order_ID) {
+    public static void order(String newAddress, String Order_ID) {
         if (connection == null) {
             try {
                 connect();
@@ -113,7 +115,7 @@ public abstract class Update extends DatabaseUtil {
         }
     }
 
-    public void productName(String Pname, String PID) {
+    public static void productName(String Pname, String PID) {
         if (connection == null) {
             try {
                 connect();
@@ -126,6 +128,7 @@ public abstract class Update extends DatabaseUtil {
                 System.out.println(e.getMessage());
                 System.out.println("SQL exception " + e.getMessage());
             }
+
         }
     }
     //end of Quang's code
