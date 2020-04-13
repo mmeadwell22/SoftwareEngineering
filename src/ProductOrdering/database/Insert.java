@@ -19,32 +19,29 @@ public abstract class Insert extends DatabaseUtil {
         }
 
         if (connection == null) {
-            try {
-                connect();
-                String query = "INSERT INTO Customer VALUES ('" + customer_name + "', '" + customer_id + "', '" +
-                        contact + "', '" + customer_addr + "', '" +
-                        payment + "', '" + company_name + "');";
+            return "Error: Database not connected";
+        }
 
-                PreparedStatement prepsInsertProduct = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-                if (!prepsInsertProduct.execute()) {
-                    return "Error: Customer record already exists or failed to insert";
-                }
-            } catch (Exception ex) {
-                return ex.toString();
+        try {
+            String insert = "INSERT INTO Product VALUES (" + customer_name + ", " + customer_id + ", " +
+                    contact + ", " + customer_addr + ", " +
+                    payment + ", " + company_name + ");";
+
+            PreparedStatement prepsInsertProduct = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            if (!prepsInsertProduct.execute()) {
+                return "Error: Customer record already exists or failed to insert";
             }
+        } catch (Exception ex) {
+            return ex.toString();
         }
-        else{
-            disconnect();
-            customer(customer_name, customer_id, contact, customer_addr, payment, company_name);
-        }
-        disconnect();
+
         return "Success";
     }
 
     // Inserts a Product
     public static String product (String product_name, double price,
                                        String product_id, int stock,
-                                       String supplier_addr) throws SQLException {
+                                       String supplier_addr) {
         if (product_name.length() > 50 ||
                 product_id.length() > 9 ||
                 supplier_addr.length() > 50) {
@@ -52,50 +49,44 @@ public abstract class Insert extends DatabaseUtil {
         }
 
         if (connection == null) {
-            try {
-                connect();
-                String query = "INSERT INTO Product VALUES ('" + product_name + "', " + price + ", '" +
-                        product_id + "', '" + stock + "', '" + supplier_addr + "');";
-                PreparedStatement prepsInsertProduct = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-                if (!prepsInsertProduct.execute()) {
-                    return "Error: Product record already exists or failed to insert";
-                }
-            } catch (SQLException ex) {
-                return ex.toString();
-            }
+            connect();
         }
-        else{
-            disconnect();
-            product(product_name, price, product_id, stock, supplier_addr);
+
+        try {
+            String insert = "INSERT INTO Product VALUES ('" + product_name + "', " + price + ", " + product_id + ", " + stock + ", '" + supplier_addr + "')";
+            PreparedStatement prepsInsertProduct = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            prepsInsertProduct.execute();
+        } catch (SQLException ex) {
+            return ex.toString();
         }
         disconnect();
         return "Success";
     }
 
-    public static String order (String order_id, double price, String customer_id,
-                                String delivery_addr, Date created) {
+    public static String order (String order_id, String customer_id,
+                                          String product_id, String delivery_addr,
+                                          Date created) {
         if (order_id.length() > 9 ||
                 customer_id.length() > 9 ||
+                product_id.length() > 9 ||
                 delivery_addr.length() > 50) {
             return "Error: Character length too long";
         }
 
-        if(connection == null) {
-            try {
-                connect();
-                String query = "INSERT INTO Order VALUES ('" + order_id + "', " + price + ", '" +
-                        customer_id + "', '" + delivery_addr + "', " + created + ");";
-                PreparedStatement prepsInsertProduct = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-                if (!prepsInsertProduct.execute()) {
-                    return "Error: Product record already exists or failed to insert";
-                }
-            } catch (SQLException ex) {
-                return ex.toString();
+        try {
+            String insert = "INSERT INTO Product VALUES (" + order_id + ", " + customer_id + ", " +
+                    product_id + ", " + delivery_addr + ", " +
+                    created + ");";
+            PreparedStatement prepsInsertProduct = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            if (!prepsInsertProduct.execute()) {
+                return "Error: Product record already exists or failed to insert";
             }
+        } catch (SQLException ex) {
+            return ex.toString();
         }
-        else {
-            disconnect();
-            order(order_id, price, customer_id, delivery_addr, created);
+
+        if (connection == null) {
+            connect();
         }
         disconnect();
         return "Success";

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.controllers.NewProductController">
+    <VBox>
+        <HBox>
+            <children>
+                <Label text="Product Name"/>
+                <TextField fx:id="productName" />
+            </children>
+        </HBox>
+
+        <HBox>
+            <children>
+                <Label text="Product Price"/>
+                <TextField fx:id="productPrice" />
+            </children>
+        </HBox>
+
+        <HBox>
+            <children>
+                <Label text="Product ID"/>
+                <TextField fx:id="productID" />
+            </children>
+        </HBox>
+
+        <HBox>
+            <children>
+                <Label text="Product Stock"/>
+                <TextField fx:id="productStock" />
+            </children>
+        </HBox>
+
+        <HBox>
+            <children>
+                <Label text="Product Address"/>
+                <TextField fx:id="productAddress" />
+            </children>
+        </HBox>
+        <Button fx:id="insert" text="Insert"/>
+    </VBox>
+</AnchorPane>
