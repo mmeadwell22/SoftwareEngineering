@@ -65,7 +65,7 @@ public class Order extends Record{
     }
 
     // Private class to create an Ordered Item
-    private class OrderItem {
+    protected class OrderItem {
         private Product product;
         private int quantity;
 

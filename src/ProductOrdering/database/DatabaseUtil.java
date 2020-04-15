@@ -35,4 +35,33 @@ public abstract class DatabaseUtil implements Connection {
             System.out.println("Failed to close the connection to the database.");
         }
     }
+
+    public static ResultSet execute(String query) {
+        ResultSet rs = null;
+
+        if (connection == null) {
+            try {
+                // Connect to the Database
+                connect();
+                // Create Query, Statement, and ResultSet
+                PreparedStatement psInsert = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+                // If the PreparedStatement doesn't execute, print error
+                if (!psInsert.execute()) {
+                    System.out.println("Could not execute SQL Statement");
+                    return null;
+                }
+                // make Result Set
+                rs = psInsert.getResultSet();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                // Disconnect from the Database
+                disconnect();
+            }
+        } else {
+            disconnect();
+            execute(query);
+        }
+        return rs;
+    }
 }
