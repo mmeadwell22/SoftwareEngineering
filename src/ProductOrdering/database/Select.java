@@ -1,0 +1,225 @@
+package ProductOrdering.database;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public abstract class Select extends DatabaseUtil {
+
+    public static ArrayList<Customer> allCustomers() {
+        ArrayList<Customer> recList = new ArrayList<Customer>();
+        if (connection == null) {
+            try {
+                connect();
+                String query = "SELECT * from CUSTOMER";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(query);
+
+                while (rs.next()) {
+                    assert false;
+                    recList.add(new Customer(
+                            rs.getString(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6)
+                    ));
+
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Select.all(table: String) error.");
+            }
+            disconnect();
+        }
+        return recList;
+    }
+
+    public static ArrayList<Order> allOrders() {
+        ArrayList<Order> recList = new ArrayList<Order>();
+        if (connection == null) {
+            try {
+                connect();
+                String query = "SELECT * from  dbo.[Order_Info]";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(query);
+
+                while (rs.next()) {
+                    assert false;
+                    recList.add(new Order(
+                            rs.getString(1),
+                            rs.getDouble(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getDate(5)
+                    ));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Select.all(table: String) error.");
+            }
+            disconnect();
+        }
+        return recList;
+    }
+
+    public static ArrayList<Product> allProducts() {
+        ArrayList<Product> recList = new ArrayList<Product>();
+        if (connection == null) {
+            try {
+                connect();
+                String query = "SELECT * from PRODUCT";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(query);
+
+                while (rs.next()) {
+                    assert false;
+                    recList.add(new Product(
+                            rs.getString(1),
+                            rs.getDouble(2),
+                            rs.getString(3),
+                            rs.getInt(4),
+                            rs.getString(5)
+                    ));
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                System.out.println("Select.all(table: String) error.");
+            }
+            disconnect();
+        }
+        return recList;
+    }
+
+    public static Customer uniqueCustomer(String id) {
+        id = id.trim();
+        //ArrayList<Customer> recList = new ArrayList<Customer>();
+        if (connection == null) {
+            try {
+                connect();
+                String query = "SELECT * FROM dbo.Customer WHERE Customer_ID = '" + id + "'";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                while(rs.next()) {
+                    assert false;
+                    Customer cus = new Customer(
+                            rs.getString(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6)
+                    );
+                    disconnect();
+                    return cus;
+                }
+            } catch (SQLException ex) {
+                System.out.println("Select.unique(table: String, id: String) error.");
+            }
+            disconnect();
+        }
+        return null;
+    }
+
+    public static Order uniqueOrder(String id) {
+        if (connection == null) {
+            try {
+                connect();
+                String query = "SELECT * from dbo.[ORDER]";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                return new Order(
+                        rs.getString(1),
+                        rs.getDouble(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getDate(5)
+                );
+            } catch (SQLException ex) {
+                System.out.println("Select.unique(table: String, id: String) error.");
+            }
+            disconnect();
+        }
+        return null;
+    }
+
+    public static Product uniqueProduct(String id) {
+        if (connection == null) {
+            try {
+                connect();
+                String query = "SELECT * from PRODUCT";
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(query);
+                return new Product(
+                        rs.getString(1),
+                        rs.getDouble(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5)
+                );
+            } catch (SQLException ex) {
+                System.out.println("Select.unique(table: String, id: String) error.");
+            }
+            disconnect();
+        }
+        return null;
+    }
+
+    public static ArrayList<Record> customQuery(String query) {
+        ArrayList<Record> recList = new ArrayList<Record>();
+        if (connection == null) {
+            try {
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery(query);
+
+                if (query.contains("Product")) {
+                    while (rs.next()) {
+                        Product r = new Product(
+                                rs.getString(1),
+                                rs.getDouble(2),
+                                rs.getString(3),
+                                rs.getInt(4),
+                                rs.getString(5)
+                        );
+                        assert false;
+                        recList.add(r);
+                    }
+                } else if (query.contains("Customer")) {
+                    while (rs.next()) {
+                        Customer r = new Customer(
+                                rs.getString(1),
+                                rs.getString(2),
+                                rs.getString(3),
+                                rs.getString(4),
+                                rs.getString(5),
+                                rs.getString(6)
+                        );
+                        assert false;
+                        recList.add(r);
+                    }
+                } else if (query.contains("Order")) {
+                    while (rs.next()) {
+                        Order r = new Order(
+                                rs.getString(1),
+                                rs.getDouble(2),
+                                rs.getString(3),
+                                rs.getString(4),
+                                rs.getDate(5)
+                        );
+                        assert false;
+                        recList.add(r);
+                    }
+                }
+
+            } catch (SQLException ex) {
+                System.out.println("Select.customer(table: String, id: String) error.");
+            }
+            disconnect();
+        }
+        return recList;
+    }
+}
+
