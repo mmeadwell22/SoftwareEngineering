@@ -3,17 +3,16 @@ import java.sql.*;
 
 
 public abstract class DatabaseUtil implements Connection {
-    // Database Connection String
-    protected static String connectionUrl =
-            "jdbc:sqlserver://localhost:1433;databaseName=OrderingSystem;integratedSecurity=true;";
 
     // Connect object for database connection
-    protected static Connection connection = null;
+    private static Connection connection = null;
 
     // Connect to the database
     public static void connect() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            // Database Connection String
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OrderingSystem;integratedSecurity=true;";
             connection = DriverManager.getConnection(connectionUrl);
             System.out.println("Connection to the Database Succeeded.");
         }
@@ -25,43 +24,14 @@ public abstract class DatabaseUtil implements Connection {
     }
 
     // Disconnect from the database
-    public static void disconnect()  {
-        try{
+    public static void disconnect() throws SQLException {
             connection.close();
             connection = null;
             System.out.println("Successfully closed the connection to the database.");
-        } catch (SQLException e){
-            e.printStackTrace();
-            System.out.println("Failed to close the connection to the database.");
-        }
     }
 
-    public static ResultSet execute(String query) {
-        ResultSet rs = null;
-
-        if (connection == null) {
-            try {
-                // Connect to the Database
-                connect();
-                // Create Query, Statement, and ResultSet
-                PreparedStatement psInsert = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-                // If the PreparedStatement doesn't execute, print error
-                if (!psInsert.execute()) {
-                    System.out.println("Could not execute SQL Statement");
-                    return null;
-                }
-                // make Result Set
-                rs = psInsert.getResultSet();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                // Disconnect from the Database
-                disconnect();
-            }
-        } else {
-            disconnect();
-            execute(query);
-        }
-        return rs;
+    public static ResultSet execute(String query) throws SQLException {
+        PreparedStatement ps = connection.prepareStatement(query);
+        return ps.executeQuery();
     }
 }

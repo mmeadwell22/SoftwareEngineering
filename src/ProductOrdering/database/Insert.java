@@ -21,15 +21,13 @@ public abstract class Insert extends DatabaseUtil {
         }
 
         // Create Insert Query
-        String insert = "INSERT INTO Customer VALUES ('" +
+        String insertQ = "INSERT INTO Customer VALUES ('" +
                 customer_name + "', '" + customer_id + "', '" +
                 contact + "', '" + customer_addr + "', '" +
                 payment + "', '" + company_name + "');";
 
-        // Report error if SQLStatement failed to execute
-        if (execute(insert) == null) {
-            System.out.println("Failed to insert customer.");
-        }
+        try{ execute(insertQ); }
+        catch (SQLException e){ e.printStackTrace(); }
     }
 
     // Inserts a Product into the Database
@@ -48,15 +46,13 @@ public abstract class Insert extends DatabaseUtil {
         }
 
         // Create Insert Query
-        String insert = "INSERT INTO Product VALUES ('" +
+        String insertQ = "INSERT INTO Product VALUES ('" +
                 product_name + "', " + price + ", '" +
                 product_id + "', " + stock + ", '" +
                 supplier_addr + "');";
 
-        // Report error if SQLStatement failed to execute
-        if (execute(insert) == null){
-            System.out.println("Failed to insert product.");
-        }
+        try{ execute(insertQ); }
+        catch (SQLException e){ e.printStackTrace(); }
     }
 
     public static void order(String order_id, double total_price,
@@ -73,15 +69,13 @@ public abstract class Insert extends DatabaseUtil {
         }
 
         // Create Insert Query
-        String insert = "INSERT INTO [Order] VALUES ('" +
+        String insertQ = "INSERT INTO [Order] VALUES ('" +
                 order_id + "', " + total_price + ", '" +
                 customer_id + "', '" + delivery_addr + "', '" +
                 created + "');";
 
-        if (execute(insert) == null) {
-            // Disconnect from the DB and try to insert product again
-            System.out.println("Failed to insert order.");
-        }
+        try{ execute(insertQ); }
+        catch (SQLException e){ e.printStackTrace(); }
     }
 
     public static void orderItem(String product_id, int quantity, String order_id){
@@ -92,13 +86,11 @@ public abstract class Insert extends DatabaseUtil {
         }
 
         // Create Insert Query
-        String insertQuery = "INSERT INTO OrderedItem VALUES ('" +
+        String insertQ = "INSERT INTO OrderedItem VALUES ('" +
                 product_id + "', " + quantity + ", '" +
                 order_id + "');";
 
-        // Report error if SQLStatement failed to execute
-        if (execute(insertQuery) == null) {
-            System.out.println("Failed to insert ordered item.");
-        }
+        try{ execute(insertQ); }
+        catch (SQLException e){ e.printStackTrace(); }
     }
 }

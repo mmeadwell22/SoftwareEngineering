@@ -2,22 +2,21 @@ package ProductOrdering.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 // Abstract Class for Selecting Tuples in the Database
 public abstract class Select extends DatabaseUtil {
+    private static final String selectAllFrom = "SELECT * FROM ";
 
     // Returns an ArrayList of all Customer tuples in the database
     public static ArrayList<Customer> allCustomers() {
         ArrayList<Customer> customersArrayList = new ArrayList<>();
         ResultSet rs;
-        String query = "SELECT * from Customer";
+        String query = selectAllFrom + "Customer;";
 
-        if ((rs = execute(query)) == null) {
-            return null;
-        }
         try {
+            connect();
+            rs = execute(query);
             // Populate the ArrayList with Customer Objects
             while (rs.next()) {
                 customersArrayList.add(new Customer(
@@ -29,6 +28,7 @@ public abstract class Select extends DatabaseUtil {
                         rs.getString(6)
                 ));
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -41,14 +41,11 @@ public abstract class Select extends DatabaseUtil {
     public static ArrayList<Order> allOrders() {
         ArrayList<Order> ordersArrayList = new ArrayList<>();
         ResultSet rs;
-        String query = "SELECT * from  dbo.[Order]";
-
-        if ((rs = execute(query)) == null) {
-            return null;
-        }
+        String query = selectAllFrom + "dbo.[Order];";
 
         try {
-
+            connect();
+            rs = execute(query);
             // Populate the ArrayList with Order Objects
             while (rs.next()) {
                 ordersArrayList.add(new Order(
@@ -59,6 +56,7 @@ public abstract class Select extends DatabaseUtil {
                         rs.getDate(5)
                 ));
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,7 +64,7 @@ public abstract class Select extends DatabaseUtil {
     }
 
 /*    public static ArrayList<Order.OrderItem> orderedItemsList(String order_id){
-        ArrayList<> orderItems = new ArrayList<>();
+        ArrayList<Order.OrderItem> orderItems = new ArrayList<>();
         ResultSet rs;
 
         String query = "SELECT * FROM OrderedItem WHERE Order_id = '" + order_id + "';";
@@ -88,12 +86,11 @@ public abstract class Select extends DatabaseUtil {
         ArrayList<Product> productsArrayList = new ArrayList<>();
         ResultSet rs;
 
-        String query = "SELECT * from Product";
+        String query = selectAllFrom + "Product;";
 
-        if ((rs = execute(query)) == null) {
-            return null;
-        }
         try {
+            connect();
+            rs = execute(query);
             // Populate the ArrayList with Product Objects
             while (rs.next()) {
                 productsArrayList.add(new Product(
@@ -104,6 +101,7 @@ public abstract class Select extends DatabaseUtil {
                         rs.getString(5)
                 ));
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -119,12 +117,11 @@ public abstract class Select extends DatabaseUtil {
         ResultSet rs;
         // Trim the whitespace
         id = id.trim();
-        String query = "SELECT * FROM dbo.Customer WHERE Customer_ID = '" + id + "';";
+        String query = selectAllFrom + "dbo.Customer WHERE Customer_ID = '" + id + "';";
 
-        if ((rs = execute(query)) == null) {
-            return null;
-        }
         try {
+            connect();
+            rs = execute(query);
             // Create Customer based on Unique ID
             while (rs.next()) {
                 customer = new Customer(
@@ -136,6 +133,7 @@ public abstract class Select extends DatabaseUtil {
                         rs.getString(6)  // company name
                 );
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -147,12 +145,11 @@ public abstract class Select extends DatabaseUtil {
         Order order = null;
         ResultSet rs;
 
-        String query = "SELECT * from dbo.[Order] WHERE Order_ID ='" + id + "';";
+        String query = selectAllFrom + "dbo.[Order] WHERE Order_ID ='" + id + "';";
 
-        if ((rs = execute(query)) == null) {
-            return null;
-        }
         try {
+            connect();
+            rs = execute(query);
             // Create Order based on Unique ID
             while (rs.next()) {
                 order = new Order(
@@ -163,6 +160,7 @@ public abstract class Select extends DatabaseUtil {
                         rs.getDate(5)    // Date
                 );
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -174,13 +172,12 @@ public abstract class Select extends DatabaseUtil {
         Product product = null;
         ResultSet rs;
 
-        String query = "SELECT * from Product WHERE Product_ID ='" + id + "';";
+        String query = selectAllFrom + "Product WHERE Product_ID ='" + id + "';";
 
-        if ((rs = execute(query)) == null) {
-            return null;
-        }
         // Create Product based on Unique ID
         try {
+            connect();
+            rs = execute(query);
             while (rs.next()) {
                 product = new Product(
                         rs.getString(1),
@@ -190,6 +187,7 @@ public abstract class Select extends DatabaseUtil {
                         rs.getString(5)
                 );
             }
+            disconnect();
         } catch (SQLException e) {
             e.printStackTrace();
         }

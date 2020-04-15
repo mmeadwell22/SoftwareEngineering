@@ -34,16 +34,11 @@ public class OrderController {
 
 
     public void initialize(){
-        acceptOrder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                UpdateData();
-            }
-        });
+        acceptOrder.setOnAction(actionEvent -> UpdateData());
     }
 
     public void UpdateData(){
-        Update.updateCustomerName(nameText.getText().toString(), order.getCustomerID());
+        Update.customerName(nameText.getText(), order.getCustomerID());
         Stage stage = (Stage) nameText.getScene().getWindow();
         stage.close();
     }
@@ -53,7 +48,5 @@ public class OrderController {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
         stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
     }*/
-
-
 
 }
