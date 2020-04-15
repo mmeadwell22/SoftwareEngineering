@@ -15,6 +15,7 @@ public class CustomerController {
     private Button gotoInfo;
 
     public void initialize(){
+
         gotoInfo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {

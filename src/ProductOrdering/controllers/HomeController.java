@@ -6,8 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.Parent;
@@ -15,15 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,14 +29,13 @@ public class HomeController {
     @FXML private Button refresh;
     @FXML private Button newProduct;
     @FXML private Button newOrder;
-    @FXML private TableView pendingOrderTable;
-    @FXML private TableColumn nameCol;
-    @FXML private TableColumn orderidCol;
+    @FXML private TableView<Order> pendingOrderTable;
+    @FXML private TableColumn<Order, String> nameCol;
+    @FXML private TableColumn<Order, String> orderidCol;
     @FXML private TableColumn emailCol;
-    @FXML private TableColumn addressCol;
-    @FXML private TableColumn phoneCol;
-    @FXML private TableColumn dateCol;
-
+    @FXML private TableColumn<Order, String> addressCol;
+    @FXML private TableColumn<Order, String> phoneCol;
+    @FXML private TableColumn<Order, Date> dateCol;
     @FXML private TableView incompleteOrderTable;
     @FXML private ScrollPane pendingOrderScroll;
     @FXML private ScrollPane incompleteOrderScroll;
@@ -53,74 +47,64 @@ public class HomeController {
         incompleteOrderTable.prefWidthProperty().bind(incompleteOrderScroll.widthProperty());
 
         //creates a list to hold all orders for the tableview
-        List tableOrders = new ArrayList();
+        List<Order> tableOrders = new ArrayList<>();
         tableOrders = GetDataFromDatabase(tableOrders);
 
         //this creates the observable list that the tables references.
         ObservableList<Order> tableOrderList = FXCollections.observableArrayList(tableOrders);
+
         //sets the minimum width of certain table cells
         addressCol.setMinWidth(175);
         dateCol.setMinWidth(100);
         nameCol.setMinWidth(100);
+
         //the lines of code assign values to specific columns in the table view.
-        nameCol.setCellValueFactory(new PropertyValueFactory<Order, String>("customerName"));
-        addressCol.setCellValueFactory(new PropertyValueFactory<Order, String>("deliveryAddress"));
-        orderidCol.setCellValueFactory(new PropertyValueFactory<Order, String>("orderID"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<Order, Date>("orderDate"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory<Order, String>("customerPhone"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("deliveryAddress"));
+        orderidCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory<>("customerPhone"));
         pendingOrderTable.setItems(tableOrderList);
-
-
 
         //creates a selection model object to allow for interacting with the table.
         TableView.TableViewSelectionModel<Order> selectionModel = pendingOrderTable.getSelectionModel();
 
         //creates a new event handler that is called whenever a table row is clicked on
-        pendingOrderTable.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                try {
-                    if (mouseEvent.isPrimaryButtonDown()) {
-                        System.out.println(selectionModel.getSelectedItem().getCustomerName());
-                        viewOrder(mouseEvent, selectionModel.getSelectedItem());
-                    }
+        pendingOrderTable.setOnMousePressed(mouseEvent -> {
+            try {
+                if (mouseEvent.isPrimaryButtonDown()) {
+                    System.out.println(selectionModel.getSelectedItem().getCustomerName());
+                    viewOrder(mouseEvent, selectionModel.getSelectedItem());
                 }
-                catch(Exception e){
-                    e.printStackTrace();
-                }
+            }
+            catch(Exception e){
+                e.printStackTrace();
             }
         });
 
         //when refresh button is click data is retrieved from database
-        refresh.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                initialize();
-            }
-        });
+        refresh.setOnAction(actionEvent -> initialize());
 
         //when new order button is click go to new scene
-        newProduct.setOnAction(new EventHandler<ActionEvent>(){
+        newProduct.setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("../fxml/newProduct.fxml"));
                     newProduct.getScene().setRoot(root);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
 
-        newOrder.setOnAction(new EventHandler<ActionEvent>() {
+        newOrder.setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("../fxml/newOrder.fxml"));
                     newOrder.getScene().setRoot(root);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -128,12 +112,12 @@ public class HomeController {
     }
 
     //function that is responsible for retrieveing data from database
-    public List GetDataFromDatabase(List list){
+    public List<Order> GetDataFromDatabase(List<Order> list){
         //retrieves all order in the database
-        List orders = Select.allOrders();
+        List<Order> orders = Select.allOrders();
         //this for loop goes through all orders in the database and assigns the correct customer to the correct order
         for(int i = 0; i < orders.size(); i++){
-            Order single = (Order) orders.get(i);
+            Order single = orders.get(i);
             Customer customer = Select.uniqueCustomer(single.getCustomerID());
             single.setCustomer(customer);
             list.add(single);
@@ -149,12 +133,7 @@ public class HomeController {
         OrderController orderController = loader.getController();
         orderController.GetData(order);
         modal.setScene(new Scene(root));
-        modal.setOnHidden(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                initialize();
-            }
-        });
+        modal.setOnHidden(windowEvent -> initialize());
         modal.setTitle("Order Info");
         modal.initModality(Modality.WINDOW_MODAL);
         modal.initOwner(((Node)event.getSource()).getScene().getWindow());

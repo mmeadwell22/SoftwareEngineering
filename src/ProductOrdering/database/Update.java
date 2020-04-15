@@ -11,7 +11,7 @@ public abstract class Update extends DatabaseUtil {
         updateCustomerPayment(payment, CID);
         updateCustomerCompany(company, CID);
     }
-    public void  updateCustomerName(String name, String CID) {
+    public static void  updateCustomerName(String name, String CID) {
         if (connection == null) {
             try {
                 connect();

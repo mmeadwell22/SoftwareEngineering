@@ -15,14 +15,11 @@ public class CustomerListController {
     private Button gotoCheckout;
 
     public void initialize(){
-        gotoCheckout.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    gotoShop();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        gotoCheckout.setOnAction(event -> {
+            try {
+                gotoShop();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }

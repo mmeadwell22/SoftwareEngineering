@@ -5,7 +5,7 @@ import java.sql.*;
 public abstract class DatabaseUtil implements Connection {
     // Database Connection String
     protected static String connectionUrl =
-            "jdbc:sqlserver://localhost:1433;databaseName=OrderSystem;integratedSecurity=true;";
+            "jdbc:sqlserver://localhost:1433;databaseName=OrderingSystem;integratedSecurity=true;";
 
     // Connect object for database connection
     protected static Connection connection = null;

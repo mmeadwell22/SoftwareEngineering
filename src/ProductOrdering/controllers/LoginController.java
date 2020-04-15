@@ -32,26 +32,20 @@ public class LoginController {
     private Text errorText;
 
     public void initialize(){
-        login.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        login.setOnAction(event -> {
+            try {
+                login();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        password.setOnKeyPressed(event -> {
+            if(event.getCode() == KeyCode.ENTER){
                 try {
                     login();
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
-            }
-        });
-
-        password.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if(event.getCode() == KeyCode.ENTER){
-                    try {
-                        login();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
                 }
             }
         });

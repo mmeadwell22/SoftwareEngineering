@@ -43,7 +43,7 @@ public class OrderController {
     }
 
     public void UpdateData(){
-        Update.customerName(nameText.getText().toString(), order.getCustomerID());
+        Update.updateCustomerName(nameText.getText().toString(), order.getCustomerID());
         Stage stage = (Stage) nameText.getScene().getWindow();
         stage.close();
     }

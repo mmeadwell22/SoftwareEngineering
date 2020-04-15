@@ -1,24 +1,28 @@
 package ProductOrdering.database;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+// Abstract Class for Selecting Tuples in the Database
 public abstract class Select extends DatabaseUtil {
 
+    // Returns an ArrayList of all Customer tuples in the database
     public static ArrayList<Customer> allCustomers() {
-        ArrayList<Customer> recList = new ArrayList<>();
+        ArrayList<Customer> customersArrayList = new ArrayList<>();
         if (connection == null) {
             try {
+                // Connect to the Database
                 connect();
-                String query = "SELECT * from CUSTOMER";
+
+                // Create Query, Statement, and ResultSet
+                String query = "SELECT * from Customer";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
 
+                // Populate the ArrayList with Customer Objects
                 while (rs.next()) {
-                    assert false;
-                    recList.add(new Customer(
+                    customersArrayList.add(new Customer(
                             rs.getString(1),
                             rs.getString(2),
                             rs.getString(3),
@@ -30,25 +34,38 @@ public abstract class Select extends DatabaseUtil {
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
-                System.out.println("Select.all(table: String) error.");
+                System.out.println("Select.all() error.");
+            } finally {
+                // Disconnect from the Database
+                disconnect();
             }
-            disconnect();
         }
-        return recList;
+        else {
+            // If the function did not work, try again
+            disconnect();
+            allCustomers();
+        }
+
+        // Return populated Customer ArrayList
+        return customersArrayList;
     }
 
+    // Returns an ArrayList of all Order tuples in the database
     public static ArrayList<Order> allOrders() {
-        ArrayList<Order> recList = new ArrayList<>();
+        ArrayList<Order> ordersArrayList = new ArrayList<>();
         if (connection == null) {
             try {
+                // Connect to the Database
                 connect();
-                String query = "SELECT * from  dbo.[ORDER]";
+
+                // Create Query, Statement, and ResultSet
+                String query = "SELECT * from  dbo.[Order]";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
 
+                // Populate the ArrayList with Order Objects
                 while (rs.next()) {
-                    assert false;
-                    recList.add(new Order(
+                    ordersArrayList.add(new Order(
                             rs.getString(1),
                             rs.getDouble(2),
                             rs.getString(3),
@@ -59,24 +76,36 @@ public abstract class Select extends DatabaseUtil {
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 System.out.println("Select.all(table: String) error.");
+            } finally {
+                // Disconnect from the Database
+                disconnect();
             }
-            disconnect();
         }
-        return recList;
+        else {
+            // If the function did not work, try again
+            disconnect();
+            allOrders();
+        }
+
+        return ordersArrayList;
     }
 
+    // Returns an ArrayList of all Products tuples in the database
     public static ArrayList<Product> allProducts() {
-        ArrayList<Product> recList = new ArrayList<Product>();
+        ArrayList<Product> productsArrayList = new ArrayList<>();
         if (connection == null) {
             try {
+                // Connect to the Database
                 connect();
-                String query = "SELECT * from PRODUCT";
+
+                // Create Query, Statement, and ResultSet
+                String query = "SELECT * from Product";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
 
+                // Populate the ArrayList with Product Objects
                 while (rs.next()) {
-                    assert false;
-                    recList.add(new Product(
+                    productsArrayList.add(new Product(
                             rs.getString(1),
                             rs.getDouble(2),
                             rs.getString(3),
@@ -88,90 +117,133 @@ public abstract class Select extends DatabaseUtil {
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 System.out.println("Select.all(table: String) error.");
+            } finally {
+                // Disconnect from the Database
+                disconnect();
             }
-            disconnect();
         }
-        return recList;
+        else {
+            // If the function did not work, try again
+            disconnect();
+            allProducts();
+        }
+
+        // Return populated Product ArrayList
+        return productsArrayList;
     }
 
+    // Returns a unique Customer Object based on the customer id
     public static Customer uniqueCustomer(String id) {
+        // Trim the whitespace
         id = id.trim();
-        //ArrayList<Customer> recList = new ArrayList<Customer>();
+
+        // Create customer object
+        Customer customer = null;
+
         if (connection == null) {
             try {
+                // Connect to the Database
                 connect();
-                String query = "SELECT * FROM dbo.Customer WHERE Customer_ID = '" + id + "'";
+
+                // Create Query, Statement, and ResultSet
+                String query = "SELECT * FROM dbo.Customer WHERE Customer_ID = '" + id + "';";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
+
+                // Create Customer based on Unique ID
                 while(rs.next()) {
-                    assert false;
-                    Customer cus = new Customer(
-                            rs.getString(1),
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getString(5),
-                            rs.getString(6)
+                    customer = new Customer(
+                            rs.getString(1), // customer name
+                            rs.getString(2), // customer ID
+                            rs.getString(3), // contact
+                            rs.getString(4), // business address
+                            rs.getString(5), // payment info
+                            rs.getString(6)  // company name
                     );
-                    disconnect();
-                    return cus;
                 }
             } catch (SQLException ex) {
-                System.out.println("Select.unique(table: String, id: String) error.");
+                System.out.println("Select.uniqueCustomer(id: String) error.");
+            } finally {
+                // Disconnect from the Database
+                disconnect();
             }
-            disconnect();
         }
-        return null;
+        return customer;
     }
 
     public static Order uniqueOrder(String id) {
+        // Create order object
+        Order order = null;
+
         if (connection == null) {
             try {
+                // Connect to the Database
                 connect();
-                String query = "SELECT * from dbo.[ORDER]";
+
+                // Create Query, Statement, and ResultSet
+                String query = "SELECT * from dbo.[Order] WHERE Order_ID ='" + id +"';";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
-                return new Order(
-                        rs.getString(1),
-                        rs.getDouble(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getDate(5)
-                );
+
+                // Create Order based on Unique ID
+                while(rs.next()) {
+                    order = new Order(
+                            rs.getString(1), // order ID
+                            rs.getDouble(2), // price
+                            rs.getString(3), // customer ID
+                            rs.getString(4), // delivery address
+                            rs.getDate(5)    // Date
+                    );
+                }
             } catch (SQLException ex) {
-                System.out.println("Select.unique(table: String, id: String) error.");
+                System.out.println("Select.unique(id: String) error.");
+            } finally {
+                // Disconnect from the Database
+                disconnect();
             }
-            disconnect();
         }
-        return null;
+        return order;
     }
 
     public static Product uniqueProduct(String id) {
+        // Initialize product object
+        Product product = null;
+
         if (connection == null) {
             try {
+                // Connect to the Database
                 connect();
-                String query = "SELECT * from PRODUCT";
+
+                // Create Query, Statement, and ResultSet
+                String query = "SELECT * from Product WHERE Product_ID ='" + id +"';";
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
-                return new Product(
-                        rs.getString(1),
-                        rs.getDouble(2),
-                        rs.getString(3),
-                        rs.getInt(4),
-                        rs.getString(5)
-                );
+
+                // Create Product based on Unique ID
+                while(rs.next()) {
+                    product = new Product(
+                            rs.getString(1),
+                            rs.getDouble(2),
+                            rs.getString(3),
+                            rs.getInt(4),
+                            rs.getString(5)
+                    );
+                }
             } catch (SQLException ex) {
                 System.out.println("Select.unique(table: String, id: String) error.");
+            } finally {
+                // Disconnect from the Database
+                disconnect();
             }
-            disconnect();
         }
-        return null;
+        return product;
     }
 
-    public static ArrayList<Record> customQuery(String query) {
+/*    public static ArrayList<Record> customQuery(String query) {
         ArrayList<Record> recList = new ArrayList<>();
         if (connection == null) {
             try {
+                connect();
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery(query);
 
@@ -220,6 +292,6 @@ public abstract class Select extends DatabaseUtil {
             disconnect();
         }
         return recList;
-    }
+    }*/
 }
 
