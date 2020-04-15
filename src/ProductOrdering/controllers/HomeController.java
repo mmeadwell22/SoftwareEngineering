@@ -115,6 +115,7 @@ public class HomeController {
     public List<Order> GetDataFromDatabase(List<Order> list){
         //retrieves all order in the database
         List<Order> orders = Select.allOrders();
+
         //this for loop goes through all orders in the database and assigns the correct customer to the correct order
         for(int i = 0; i < orders.size(); i++){
             Order single = orders.get(i);
