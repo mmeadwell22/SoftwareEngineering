@@ -27,7 +27,8 @@ public abstract class Update extends DatabaseUtil {
             }
 
         }
-        else {      //disconnect then, recursively call
+        else {
+            //disconnect then, recursively call
             disconnect();
             updateCustomerName(name, CID);
         }
