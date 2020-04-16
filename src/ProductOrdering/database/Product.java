@@ -20,6 +20,7 @@ public class Product extends Record{
     public String getItemName() {
         return item_name;
     }
+
     public double getItemPrice() {
         return item_price;
     }

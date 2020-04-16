@@ -1,7 +1,6 @@
 package ProductOrdering.database;
 
-import javafx.beans.property.SimpleStringProperty;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Order extends Record{
@@ -11,7 +10,9 @@ public class Order extends Record{
     private String delivery_address;
     private Date order_date;
     private Customer customer;
+    private ArrayList<OrderItem> orderedItems;
 
+    // Constructor
     public Order (String order_id, double total,
                   String customer_id, String delivery_address,
                   Date order_date){
@@ -22,6 +23,7 @@ public class Order extends Record{
         this.order_date = order_date;
     }
 
+    // Get and Set Properties
     public String getCustomerID() {
         return customer_id;
     }
@@ -52,5 +54,32 @@ public class Order extends Record{
 
     public void setCustomer(Customer cus){
         this.customer = cus;
+    }
+
+    // Get and Create OrderedItems
+    public ArrayList<OrderItem> getOrderedItems() { return orderedItems; }
+
+    private void createOrderItem(Product product, int quantity){
+
+        orderedItems.add(new OrderItem(product, quantity));
+    }
+
+    // Private class to create an Ordered Item
+    protected class OrderItem {
+        private Product product;
+        private int quantity;
+
+        OrderItem(Product product, int quantity){
+            this.product = product;
+            this.quantity = quantity;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public Product getProduct() {
+            return product;
+        }
     }
 }

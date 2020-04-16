@@ -26,7 +26,7 @@ public class NewOrderController {
     @FXML private VBox vbox;
 
     public void initialize(){
-        List products = new ArrayList();
+        List products;
         products = Select.allProducts();
 
         ObservableList<Product> productsList = FXCollections.observableArrayList(products);
@@ -34,15 +34,14 @@ public class NewOrderController {
             @Override
             public ListCell<Product> call(ListView<Product> listView) {
 
-                final ListCell<Product> cell = new ListCell<Product>(){
+                final ListCell<Product> cell = new ListCell<>() {
                     @Override
-                    protected void updateItem(Product p, boolean bln){
+                    protected void updateItem(Product p, boolean bln) {
                         super.updateItem(p, bln);
 
-                        if(p != null){
+                        if (p != null) {
                             setText(p.getItemName());
-                        }
-                        else{
+                        } else {
                             setText(null);
                         }
                     }
@@ -52,12 +51,9 @@ public class NewOrderController {
         });
         productDropdown.setItems(productsList);
         productDropdown.setConverter(new ProductConverter());
-        productDropdown.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Product p = (Product) productDropdown.getValue();
-                System.out.println(p.getItemPrice());
-            }
+        productDropdown.setOnAction(actionEvent -> {
+            Product p = (Product) productDropdown.getValue();
+            System.out.println(p.getItemPrice());
         });
     }
 }

@@ -11,7 +11,7 @@
       <Label layoutX="36.0" layoutY="167.0" text="Payment Type" />
       <Label layoutX="36.0" layoutY="194.0" text="Total" />
       <Button fx:id="home" layoutX="300.0" layoutY="225.0" mnemonicParsing="false" text="Confirm" />
-      <TextField layoutX="151.0" layoutY="191.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextField fx:id="orderIdTextField" layoutX="151.0" layoutY="191.0" prefHeight="25.0" prefWidth="212.0" />
       <TextField layoutX="151.0" layoutY="164.0" prefHeight="25.0" prefWidth="212.0" />
       <TextField layoutX="151.0" layoutY="137.0" prefHeight="25.0" prefWidth="212.0" />
       <TextField layoutX="151.0" layoutY="110.0" prefHeight="25.0" prefWidth="212.0" />
