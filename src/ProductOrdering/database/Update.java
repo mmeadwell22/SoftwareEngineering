@@ -11,15 +11,14 @@ public abstract class Update extends DatabaseUtil {
         updateCustomerPayment(payment, CID);
         updateCustomerCompany(company, CID);
     }
-    public void  updateCustomerName(String name, String CID) {
+    public static void updateCustomerName(String name, String CID) {
         if (connection == null) {
             try {
                 connect();
 
-                String SQL = "Update dbo.Customer Set CName =" + name +"where CID =" +CID;
+                String SQL = "Update dbo.Customer Set Customer_Name = '" + name + "' where Customer_ID = " + CID;
                 Statement stm = connection.createStatement();
-                ResultSet result = stm.executeQuery(SQL);
-
+                stm.executeUpdate(SQL);
                 disconnect();
             }
             catch(SQLException e){
