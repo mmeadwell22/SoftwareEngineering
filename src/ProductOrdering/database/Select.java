@@ -1,5 +1,8 @@
 package ProductOrdering.database;
 
+import ProductOrdering.controllers.OrderDetails;
+
+import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -192,6 +195,45 @@ public abstract class Select extends DatabaseUtil {
             e.printStackTrace();
         }
         return product;
+    }
+
+    public static int maxOrderId(){
+        int maxOrderId = 0;
+        ResultSet rs;
+
+        String query = "select max(CAST(Order_ID AS int)) from dbo.[Order]";
+        try{
+            connect();
+            rs = execute(query);
+
+            while(rs.next()){
+                maxOrderId = rs.getInt(1);
+            }
+            disconnect();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return maxOrderId;
+    }
+
+    public static ArrayList<OrderDetails> allProductsOnOrder(String id){
+        ArrayList<OrderDetails> recList = new ArrayList<>();
+        ResultSet rs;
+
+        String query = "select * from dbo.[OrderedItem] where Order_ID = " + id + ";";
+
+        try{
+            connect();
+            rs = execute(query);
+
+            while(rs.next()){
+                recList.add(new OrderDetails("", rs.getInt(2), 0.00, rs.getString(1)));
+            }
+            disconnect();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return recList;
     }
 }
 

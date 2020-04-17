@@ -42,11 +42,4 @@ public class OrderController {
         Stage stage = (Stage) nameText.getScene().getWindow();
         stage.close();
     }
-
-/*    public void close() throws Exception{
-        Stage stage = (Stage) close.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
-        stage.setScene(new Scene(root, stage.getWidth(), stage.getHeight()));
-    }*/
-
 }

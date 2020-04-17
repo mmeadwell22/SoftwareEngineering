@@ -3,18 +3,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.controllers.CheckoutController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductOrdering.controllers.CheckoutController">
    <children>
-      <Label layoutX="36.0" layoutY="86.0" text="Order ID" />
-      <Label layoutX="37.0" layoutY="114.0" text="Customer ID" />
-      <Label layoutX="36.0" layoutY="141.0" text="Delivery Address" />
-      <Label layoutX="36.0" layoutY="167.0" text="Payment Type" />
-      <Label layoutX="36.0" layoutY="194.0" text="Total" />
-      <Button fx:id="home" layoutX="300.0" layoutY="225.0" mnemonicParsing="false" text="Confirm" />
-      <TextField fx:id="orderIdTextField" layoutX="151.0" layoutY="191.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField layoutX="151.0" layoutY="164.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField layoutX="151.0" layoutY="137.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField layoutX="151.0" layoutY="110.0" prefHeight="25.0" prefWidth="212.0" />
-      <TextField layoutX="151.0" layoutY="82.0" prefHeight="25.0" prefWidth="212.0" />
+      <Label layoutX="37.0" layoutY="216.0" text="Order ID" />
+      <Label layoutX="38.0" layoutY="244.0" text="Customer ID" />
+      <Label layoutX="37.0" layoutY="271.0" text="Delivery Address" />
+      <Label layoutX="37.0" layoutY="297.0" text="Payment Type" />
+      <Label layoutX="37.0" layoutY="324.0" text="Total" />
+      <Button fx:id="home" layoutX="301.0" layoutY="355.0" mnemonicParsing="false" text="Place Order" />
+      <TextField fx:id="totalTextField" layoutX="152.0" layoutY="321.0" prefHeight="25.0" prefWidth="212.0" disable="true" />
+      <TextField fx:id="payment" layoutX="152.0" layoutY="294.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextField fx:id="deliveryAddress" layoutX="152.0" layoutY="267.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextField fx:id="customerId" layoutX="152.0" layoutY="240.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextField fx:id="orderIdTextField" layoutX="152.0" layoutY="212.0" prefHeight="25.0" prefWidth="212.0" />
+      <TableView fx:id="productTable" layoutX="7.0" layoutY="14.0" prefHeight="186.0" prefWidth="423.0">
+         <columns>
+            <TableColumn fx:id="itemNameCol" prefWidth="100.0" text="Item Name" />
+            <TableColumn fx:id="itemQuanCol" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="itemPriceCol" prefWidth="75.0" text="Item Price" />
+            <TableColumn fx:id="totalPriceCol" prefWidth="130.0" text="Item Price Total" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
