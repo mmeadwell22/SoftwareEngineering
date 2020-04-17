@@ -21,7 +21,7 @@ public class Customer extends Record {
         this.company_name = company_name;
     }
 
-    public String getName() {
+    public String getCompanyName() {
         return company_name;
     }
 

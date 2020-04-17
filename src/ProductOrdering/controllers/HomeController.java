@@ -10,15 +10,14 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,19 +25,17 @@ import java.util.List;
 public class HomeController {
 
     //grabs references to all the fxml objects by the fx:id in the corresponding fxml file.
-    @FXML private Button refresh;
-    @FXML private Button newProduct;
-    @FXML private Button newOrder;
-    @FXML private TableView<Order> pendingOrderTable;
-    @FXML private TableColumn<Order, String> nameCol;
-    @FXML private TableColumn<Order, String> orderidCol;
-    @FXML private TableColumn emailCol;
-    @FXML private TableColumn<Order, String> addressCol;
-    @FXML private TableColumn<Order, String> phoneCol;
-    @FXML private TableColumn<Order, Date> dateCol;
+    @FXML private MenuBar menuBar;
+    @FXML private TableView pendingOrderTable;
+    @FXML private TableColumn nameCol;
+    @FXML private TableColumn orderidCol;
+    @FXML private TableColumn addressCol;
+    @FXML private TableColumn phoneCol;
+    @FXML private TableColumn dateCol;
     @FXML private TableView incompleteOrderTable;
     @FXML private ScrollPane pendingOrderScroll;
     @FXML private ScrollPane incompleteOrderScroll;
+    @FXML private DatePicker datePicker;
 
     //this function is ran whenever a new controller is initialized
     public void initialize(){
@@ -46,25 +43,40 @@ public class HomeController {
         pendingOrderTable.prefWidthProperty().bind(pendingOrderScroll.widthProperty());
         incompleteOrderTable.prefWidthProperty().bind(incompleteOrderScroll.widthProperty());
 
-        //creates a list to hold all orders for the tableview
-        List<Order> tableOrders = new ArrayList<>();
-        tableOrders = GetDataFromDatabase(tableOrders);
-
-        //this creates the observable list that the tables references.
-        ObservableList<Order> tableOrderList = FXCollections.observableArrayList(tableOrders);
-
         //sets the minimum width of certain table cells
         addressCol.setMinWidth(175);
         dateCol.setMinWidth(100);
         nameCol.setMinWidth(100);
+        updateTable();
 
-        //the lines of code assign values to specific columns in the table view.
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
-        addressCol.setCellValueFactory(new PropertyValueFactory<>("deliveryAddress"));
-        orderidCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
-        phoneCol.setCellValueFactory(new PropertyValueFactory<>("customerPhone"));
-        pendingOrderTable.setItems(tableOrderList);
+        Menu menu1 = new Menu("Menu");
+        MenuItem refresh = new MenuItem("Refresh");
+        MenuItem newOrder = new MenuItem("New Order");
+        MenuItem newProduct = new MenuItem("New Product");
+        menu1.getItems().add(refresh);
+        menu1.getItems().add(newOrder);
+        menu1.getItems().add(newProduct);
+        menuBar.getMenus().add(menu1);
+
+        refresh.setOnAction(actionEvent -> updateTable());
+
+        newOrder.setOnAction(actionEvent -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../fxml/newOrder.fxml"));
+                menuBar.getScene().setRoot(root);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        newProduct.setOnAction(actionEvent -> {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../fxml.newProduct.fxml"));
+                menuBar.getScene().setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
         //creates a selection model object to allow for interacting with the table.
         TableView.TableViewSelectionModel<Order> selectionModel = pendingOrderTable.getSelectionModel();
@@ -73,7 +85,6 @@ public class HomeController {
         pendingOrderTable.setOnMousePressed(mouseEvent -> {
             try {
                 if (mouseEvent.isPrimaryButtonDown()) {
-                    System.out.println(selectionModel.getSelectedItem().getCustomerName());
                     viewOrder(mouseEvent, selectionModel.getSelectedItem());
                 }
             }
@@ -82,31 +93,11 @@ public class HomeController {
             }
         });
 
-        //when refresh button is click data is retrieved from database
-        refresh.setOnAction(actionEvent -> initialize());
-
-        //when new order button is click go to new scene
-        newProduct.setOnAction(new EventHandler<>() {
+        //potential to add filtering based on date.
+        datePicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("../fxml/newProduct.fxml"));
-                    newProduct.getScene().setRoot(root);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
-        newOrder.setOnAction(new EventHandler<>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("../fxml/newOrder.fxml"));
-                    newOrder.getScene().setRoot(root);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
             }
         });
     }
@@ -126,6 +117,21 @@ public class HomeController {
         return list;
     }
 
+    public void updateTable(){
+        List<Order> tableOrders = new ArrayList<>();
+        tableOrders = GetDataFromDatabase(tableOrders);
+
+        ObservableList<Order> tableOrderList = FXCollections.observableArrayList(tableOrders);
+
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        addressCol.setCellValueFactory(new PropertyValueFactory<>("deliveryAddress"));
+        orderidCol.setCellValueFactory(new PropertyValueFactory<>("tempTesting"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
+        phoneCol.setCellValueFactory(new PropertyValueFactory<>("customerPhone"));
+        pendingOrderTable.setItems(tableOrderList);
+
+    }
+
     //function calls a new modal to be loaded.
     public void viewOrder(MouseEvent event, Order order) throws Exception{
         Stage modal = new Stage();
@@ -134,7 +140,7 @@ public class HomeController {
         OrderController orderController = loader.getController();
         orderController.GetData(order);
         modal.setScene(new Scene(root));
-        modal.setOnHidden(windowEvent -> initialize());
+        modal.setOnHidden(windowEvent -> updateTable());
         modal.setTitle("Order Info");
         modal.initModality(Modality.WINDOW_MODAL);
         modal.initOwner(((Node)event.getSource()).getScene().getWindow());

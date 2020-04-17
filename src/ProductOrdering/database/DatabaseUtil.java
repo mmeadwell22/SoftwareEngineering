@@ -12,7 +12,7 @@ public abstract class DatabaseUtil implements Connection {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             // Database Connection String
-            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OrderingSystem;integratedSecurity=true;";
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OrderSystem;integratedSecurity=true;";
             connection = DriverManager.getConnection(connectionUrl);
             System.out.println("Connection to the Database Succeeded.");
         }
@@ -33,5 +33,10 @@ public abstract class DatabaseUtil implements Connection {
     public static ResultSet execute(String query) throws SQLException {
         PreparedStatement ps = connection.prepareStatement(query);
         return ps.executeQuery();
+    }
+
+    public static void update(String query) throws SQLException{
+        PreparedStatement ps = connection.prepareStatement(query);
+        int row = ps.executeUpdate();
     }
 }

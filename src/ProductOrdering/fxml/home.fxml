@@ -47,6 +47,7 @@
                      </content>
                         </ScrollPane>
                         <Label text="Pending order" />
+                        <DatePicker fx:id="datePicker" />
                         <Label text="Incomplete Orders" GridPane.columnIndex="1" />
                   <ScrollPane fx:id="pendingOrderScroll" hmax="0.0" hmin="500.0" prefHeight="500.0" prefWidth="200.0" vmax="0.0" vmin="500.0" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <content>
@@ -54,7 +55,7 @@
                           <columns>
                             <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
                             <TableColumn fx:id="orderidCol" prefWidth="75.0" text="Order ID" />
-                            <TableColumn fx:id="emailCol" prefWidth="75.0" text="Email" />
+<!--                            <TableColumn fx:id="emailCol" prefWidth="75.0" text="Email" />-->
                             <TableColumn fx:id="addressCol" prefWidth="75.0" text="Address" />
                             <TableColumn fx:id="phoneCol" prefWidth="75.0" text="Phone" />
                             <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date Ordered" />
@@ -64,9 +65,9 @@
                   </ScrollPane>
                     </children>
                 </GridPane>
-            <Button fx:id="refresh" mnemonicParsing="false" text="Refresh" />
-                <Button fx:id="newProduct" mnemonicParsing="false" text="New Product"/>
-                <Button fx:id="newOrder" mnemonicParsing="false" text="New Order"/>
+<!--            <Button fx:id="refresh" mnemonicParsing="false" text="Refresh" />-->
+<!--                <Button fx:id="newProduct" mnemonicParsing="false" text="New Product" />-->
+<!--                <Button fx:id="newOrder" mnemonicParsing="false" text="New Order" />-->
             </children>
         </VBox>
     </children>
