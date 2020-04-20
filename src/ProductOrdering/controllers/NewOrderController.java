@@ -1,7 +1,5 @@
 package ProductOrdering.controllers;
 
-import javafx.beans.Observable;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -117,7 +115,7 @@ public class NewOrderController {
             @Override
             public void handle(ActionEvent actionEvent){
                 try {
-                    Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("src/ProductOrdering/fxml/home.fxml"));
                     close.getScene().setRoot(root);
                 }
                 catch(Exception e){
@@ -137,7 +135,7 @@ public class NewOrderController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 try {
-                    FXMLLoader loader = new FXMLLoader((getClass().getResource("../fxml/customerList.fxml")));
+                    FXMLLoader loader = new FXMLLoader((getClass().getResource("src/ProductOrdering/fxml/customerList.fxml")));
                     Parent root = loader.load();
                     CustomerListController controller = loader.getController();
                     controller.receiveData(items, total);

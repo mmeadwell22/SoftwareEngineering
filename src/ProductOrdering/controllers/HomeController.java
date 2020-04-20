@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class HomeController {
@@ -62,7 +61,7 @@ public class HomeController {
 
         newOrder.setOnAction(actionEvent -> {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../fxml/newOrder.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("src/ProductOrdering/fxml/newOrder.fxml"));
                 menuBar.getScene().setRoot(root);
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -125,7 +124,7 @@ public class HomeController {
 
         nameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("deliveryAddress"));
-        orderidCol.setCellValueFactory(new PropertyValueFactory<>("tempTesting"));
+        orderidCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("orderDate"));
         phoneCol.setCellValueFactory(new PropertyValueFactory<>("customerPhone"));
         pendingOrderTable.setItems(tableOrderList);
@@ -135,7 +134,7 @@ public class HomeController {
     //function calls a new modal to be loaded.
     public void viewOrder(MouseEvent event, Order order) throws Exception{
         Stage modal = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/order.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("src/ProductOrdering/fxml/order.fxml"));
         Parent root = loader.load();
         OrderController orderController = loader.getController();
         orderController.GetData(order);

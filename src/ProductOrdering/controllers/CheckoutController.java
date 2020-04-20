@@ -1,7 +1,6 @@
 package ProductOrdering.controllers;
 
 import ProductOrdering.database.*;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -82,7 +81,7 @@ public class CheckoutController {
         warn.setHeaderText(null);
         warn.setContentText("Your Order has been placed");
         warn.showAndWait();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("src/ProductOrdering/fxml/home.fxml"));
         home.getScene().setRoot(root);
     }
 }

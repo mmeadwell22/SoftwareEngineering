@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Order extends Record{
     private String order_id;
-    //private int order_id_int;
     private String customer_id;
     private double total;
     private String delivery_address;
@@ -18,7 +17,6 @@ public class Order extends Record{
                   String customer_id, String delivery_address,
                   Date order_date){
         this.order_id = order_id;
-        //this.order_id_int = Integer.parseInt(order_id);
         this.total = total;
         this.customer_id = customer_id;
         this.delivery_address = delivery_address;
@@ -43,14 +41,6 @@ public class Order extends Record{
     }
 
     public String getOrderID() { return order_id; }
-
-    //public int getOrderIdInt(){ return Integer.parseInt(order_id); }
-
-    public int getTempTesting(){
-        this.order_id = this.order_id.trim();
-        int test = Integer.parseInt(this.order_id);
-        return test;
-    }
 
     public String getCustomerName(){
         return customer.getCustomerName();

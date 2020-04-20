@@ -2,28 +2,18 @@ package ProductOrdering.controllers;
 
 import ProductOrdering.database.Customer;
 import ProductOrdering.database.Insert;
-import ProductOrdering.database.Order;
 import ProductOrdering.database.Select;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
-import java.rmi.server.ExportException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -151,7 +141,7 @@ public class CustomerListController {
     }
 
     public void gotoShop() throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/checkout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("src/ProductOrdering/fxml/checkout.fxml"));
         gotoCheckout.getScene().setRoot(root);
     }
 
@@ -161,7 +151,7 @@ public class CustomerListController {
     }
 
     public void sendData(Customer customer) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/checkout.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("src/ProductOrdering/fxml/checkout.fxml"));
         Parent root = loader.load();
         CheckoutController checkoutController = loader.getController();
         checkoutController.receiveData(products, customer, totalPrice);
