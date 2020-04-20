@@ -3,22 +3,19 @@ package ProductOrdering.database;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Order extends Record{
+public class Order{
     private String order_id;
-    //private int order_id_int;
     private String customer_id;
     private double total;
     private String delivery_address;
     private Date order_date;
     private Customer customer;
-    private ArrayList<OrderItem> orderedItems;
 
     // Constructor
     public Order (String order_id, double total,
                   String customer_id, String delivery_address,
                   Date order_date){
         this.order_id = order_id;
-        //this.order_id_int = Integer.parseInt(order_id);
         this.total = total;
         this.customer_id = customer_id;
         this.delivery_address = delivery_address;
@@ -44,50 +41,11 @@ public class Order extends Record{
 
     public String getOrderID() { return order_id; }
 
-    //public int getOrderIdInt(){ return Integer.parseInt(order_id); }
-
-    public int getTempTesting(){
-        this.order_id = this.order_id.trim();
-        int test = Integer.parseInt(this.order_id);
-        return test;
-    }
-
     public String getCustomerName(){
         return customer.getCustomerName();
     }
 
-    public String getCustomerPhone(){
-        return this.customer.getPhone();
-    }
-
     public void setCustomer(Customer cus){
         this.customer = cus;
-    }
-
-    // Get and Create OrderedItems
-    public ArrayList<OrderItem> getOrderedItems() { return orderedItems; }
-
-    private void createOrderItem(Product product, int quantity){
-
-        orderedItems.add(new OrderItem(product, quantity));
-    }
-
-    // Private class to create an Ordered Item
-    protected class OrderItem {
-        private Product product;
-        private int quantity;
-
-        OrderItem(Product product, int quantity){
-            this.product = product;
-            this.quantity = quantity;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
-
-        public Product getProduct() {
-            return product;
-        }
     }
 }

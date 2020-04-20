@@ -1,6 +1,6 @@
 package ProductOrdering.database;
 
-public class Product extends Record{
+public class Product{
     private String item_name;
     private double item_price;
     private String product_id;

@@ -2,7 +2,7 @@ package ProductOrdering.database;
 import java.sql.*;
 
 
-public abstract class DatabaseUtil implements Connection {
+public abstract class DatabaseUtil {
 
     // Connect object for database connection
     private static Connection connection = null;
@@ -12,7 +12,7 @@ public abstract class DatabaseUtil implements Connection {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             // Database Connection String
-            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OrderSystem;integratedSecurity=true;";
+            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OrderingSystem;integratedSecurity=true;";
             connection = DriverManager.getConnection(connectionUrl);
             System.out.println("Connection to the Database Succeeded.");
         }

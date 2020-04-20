@@ -1,4 +1,4 @@
-package ProductOrdering.controllers;
+package ProductOrdering.database;
 
 public class OrderDetails {
     private String itemName;

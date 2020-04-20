@@ -1,6 +1,6 @@
 package ProductOrdering.database;
 
-public class Customer extends Record {
+public class Customer{
     private String customer_name,
             customer_id,
             phone,
