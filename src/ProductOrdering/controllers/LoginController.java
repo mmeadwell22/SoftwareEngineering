@@ -1,7 +1,5 @@
 package ProductOrdering.controllers;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
@@ -9,13 +7,7 @@ import javafx.scene.text.Text;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.layout.Pane;
-
-import java.awt.*;
 
 public class LoginController {
 
@@ -57,7 +49,7 @@ public class LoginController {
     public void login() throws Exception{
         if(UserName.equals(username.getText()) && Password.equals(password.getText())){
             System.out.println("login successful");
-            Parent root = FXMLLoader.load(getClass().getResource("../fxml/home.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("src/ProductOrdering/fxml/home.fxml"));
             username.getScene().setRoot(root);
         }
         else{

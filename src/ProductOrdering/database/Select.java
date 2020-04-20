@@ -66,24 +66,6 @@ public abstract class Select extends DatabaseUtil {
         return ordersArrayList;
     }
 
-/*    public static ArrayList<Order.OrderItem> orderedItemsList(String order_id){
-        ArrayList<Order.OrderItem> orderItems = new ArrayList<>();
-        ResultSet rs;
-
-        String query = "SELECT * FROM OrderedItem WHERE Order_id = '" + order_id + "';";
-
-        if ((rs = execute(query)) == null) {
-            return null;
-        }
-        try{
-            while(rs.next()){
-                orderItems.add()
-            }
-        }
-
-        return orderItems;
-    }*/
-
     // Returns an ArrayList of all Products tuples in the database
     public static ArrayList<Product> allProducts() {
         ArrayList<Product> productsArrayList = new ArrayList<>();
